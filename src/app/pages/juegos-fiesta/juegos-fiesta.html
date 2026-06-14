@@ -1,0 +1,60 @@
+<header class="encabezado" id="inicio">
+  <div class="contenedor encabezado-contenido">
+    <h1>Tu turno web</h1>
+    <p>Bienvenido a Tu Turno Web</p>
+    <a routerLink="/registro" class="boton-principal">Registrarse</a>
+  </div>
+</header>
+
+<app-navbar></app-navbar>
+
+<main>
+  <section class="seccion juegos">
+    <div class="contenedor">
+      <h2>Juegos disponibles</h2>
+      <p>Juegos disponibles hasta agotar stock</p>
+      <div class="alert alert-success" *ngIf="mensajeCarrito">{{ mensajeCarrito }}</div>
+    </div>
+  </section>
+
+  <div class="contenedor">
+    <div class="contenedor-tarjetas">
+      <article class="tarjeta-lista" *ngFor="let juego of juegos">
+        <img [src]="juego.imagen" [alt]="juego.nombre">
+        <div class="tarjeta-lista-fiesta">
+          <span class="categoria-lista">{{ juego.categoria }}</span>
+          <h3>{{ juego.nombre }}</h3>
+          <p>{{ juego.descripcion }}</p>
+          <p class="precio-lista">{{ juego.precio }}</p>
+          <p class="descuento-lista">{{ juego.descuento }}</p>
+          <button class="btn btn-primary" (click)="agregarAlCarrito(juego.nombre, juego.precioData, juego.imagen)">🛒 Agregar al carrito</button>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <section class="seccion beneficios" id="beneficios">
+    <div class="contenedor">
+      <h2>¿Por qué elegirnos?</h2>
+      <div class="contenedor-beneficios">
+        <article class="beneficios" *ngFor="let beneficio of beneficios">
+          <h3>{{ beneficio.titulo }}</h3>
+          <p>{{ beneficio.descripcion }}</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion contacto" id="contacto">
+    <div class="contenedor">
+      <h2>Contacto</h2>
+      <p>Visitanos de lunes a viernes entre 08:30 y 19:00 hrs</p>
+      <p>Dirección: Avenida 11 de julio, Santiago</p>
+      <a routerLink="/" class="boton-secundario">volver al inicio</a>
+    </div>
+  </section>
+</main>
+
+<footer class="pie-pagina">
+  <p>© 2026 Tu turno Web — Ejemplo académico DSY2202</p>
+</footer>

@@ -1,0 +1,484 @@
+/* You can add global styles to this file, and also import other style files */
+:root{
+    /* Colores principales */
+    --color-header: #1E293B;        /* Azul Oxford Profundo */
+    --color-fondo: #F8FAFC;         /* Blanco Roto / Crema */
+    --color-tarjeta: #FFFFFF;       /* Blanco Puro */
+    --color-footer: #0F172A;        /* Gris Grafito Oscuro */
+    --color-acento: #EA580C;        /* Naranja Vibrante */
+
+    /* Textos */
+    --color-texto-claro: #FFFFFF;   /* Para texto sobre fondos oscuros */
+    --color-texto-oscuro: #1E293B;  /* Para texto sobre fondos claros */
+    --fuente-principal: Arial, Helvetica, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+main {
+     flex: 1;
+}
+
+body{
+    margin: 0;
+    font-family: var(--fuente-principal);
+    background-color: var(--color-fondo);
+    color: var(--color-texto-oscuro);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+#dashboard {
+    width: 100%;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+
+.contenedor{
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+/*
+    encabezado
+ */
+
+.encabezado{
+    min-height: 30vh;
+    background: linear-gradient(rgba(0,0,0,0.55), rgba(92,52,34,0.8));
+    background-size:  cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color:  var(--color-tarjeta);
+    width: 100%;
+}
+
+.encabezado-contenido{
+    color: var(--color-texto-claro);
+    padding: 2rem;
+    animation: fadeIn 1.5s ease;
+    width: 100%;
+    padding: 1rem;
+}
+/*
+nav
+*/
+.navegacion{
+  background-color: var(--color-texto-oscuro);
+  text-align: center;
+  padding: 14px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  animation: slideDown 0.5s ease; 
+}
+
+.navegacion a{
+  color: var(--color-texto-claro);
+  background-color: var(--color-texto-oscuro);
+  text-decoration: none;
+  margin: 0 14px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.navegacion a:hover{
+  color: var(--color-fondo);
+}
+
+.seccion.nosotros {
+    background-color: var(--color-header);
+    color: var(--color-texto-claro);
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.seccion.carro {
+    background-color: var(--color-header);
+    color: var(--color-texto-claro);
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.seccion.juegos{
+    background-color: var(--color-header);
+    color: var(--color-texto-claro);
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.seccion.menu {
+    background-color: var(--color-fondo);
+    color: var(--color-texto-oscuro);
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.tarjeta {
+    background-color: var(--color-tarjeta);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    animation: slideUp 0.6s ease;
+}
+
+.tarjeta-lista {
+    background-color: var(--color-tarjeta);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    animation: slideUp 0.6s ease;
+}
+
+
+.tarjeta-contenido {
+  padding: 1rem;
+}
+
+.tarjeta-lista-rol,
+.tarjeta-lista-familiar,
+.tarjeta-lista-estrategia,
+.tarjeta-lista-fiesta {
+    padding: 1rem;
+    color: var(--color-texto-oscuro);
+}
+
+.tarjeta-lista{
+    background-color: var(--color-tarjeta);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    animation: slideUp 0.6s ease;
+}
+
+.contenedor-tarjetas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 1.5rem;
+}
+
+.precio-lista {
+    color: var(--color-acento);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.seccion.juegos {
+    background-color: var(--color-header); 
+    color: var(--color-texto-claro);
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.seccion.lista {
+    background-color: var(--color-fondo); 
+    padding: 3rem 0;
+}
+
+.categoria-lista {
+    font-size: 0.85rem;
+    color: var(--color-acento);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.descuento-lista {
+    color: green;
+    font-size: 0.9rem;
+}
+
+.tarjeta img {
+    width: 100%;
+    height: 350px;
+    object-fit: contain;  
+    object-position: center;
+}
+
+.tarjeta-lista img {
+    width: 100%;
+    height: 350px;
+    object-fit: contain;
+    object-position: center;
+}
+
+.precio {
+    color: var(--color-acento);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.descuento {
+    color: green;
+    font-size: 0.9rem;
+}
+
+.seccion.beneficios {
+    background-color: var(--color-header); 
+    color: var(--color-texto-claro);       
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.contenedor-beneficios {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.beneficios article {
+    background-color: var(--color-tarjeta);
+    color: var(--color-texto-oscuro);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+/*
+footer
+*/
+
+.seccion.contacto {
+    background-color: var(--color-fondo);
+    color: var(--color-texto-oscuro);
+    text-align: center;
+    padding: 3rem 0;
+}
+
+
+.pie-pagina {
+    background-color: var(--color-footer);
+    color: var(--color-texto-claro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+/*
+Botones
+*/
+
+.boton-principal {
+    animation: pulse 2s infinite;
+    color: var(--color-texto-claro);
+    background-color: var(--color-acento);
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.boton-secundario{
+    animation: pulse 2s infinite;
+    color: var(--color-texto-claro);
+    background-color: var(--color-acento);
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.seccion.registro {
+    padding: 3rem 0; 
+}
+
+#formulario-registro {
+    margin-bottom: 2rem;
+}
+
+.login {
+    background-color: var(--color-fondo);
+    padding: 3rem 0;
+}
+
+.login .contenedor {
+    max-width: 500px;
+}
+
+.form-recuperar {
+    background-color: var(--color-fondo);
+    padding: 3rem 0;
+}
+
+.recuperar-contrasena .contenedor {
+    max-width: 500px;
+    padding: 3rem 0;
+} 
+
+#usuario-activo {
+    color: var(--color-texto-claro);
+    font-weight: bold;
+    line-height: 1.5;
+    padding: 0.5rem;
+}
+
+.seccion.perfil .contenedor {
+    max-width: 500px;
+    padding: 3rem 0;
+}
+
+#formulario-perfil {
+    background-color: var(--color-fondo);
+    padding: 3rem 0;
+}
+.navegacion {
+    background-color: var(--color-texto-oscuro);
+}
+
+.navegacion .nav-link {
+    color: var(--color-texto-claro) !important;
+    font-weight: bold;
+}
+
+.navegacion .nav-link:hover {
+    color: var(--color-acento) !important;
+}
+
+.navbar-toggler {
+    border-color: var(--color-texto-claro);
+}
+
+.navbar-toggler-icon {
+    filter: invert(1); /* hace el ícono blanco */
+}
+.seccion.carro .card img {
+    height: 150px;
+    object-fit: contain;
+}
+
+.seccion.carro .card {
+    max-width: 800px;
+    margin: 0 auto 1rem auto;
+}
+
+.seccion.carro .card img {
+    height: 80px;
+    object-fit: contain;
+}
+
+.seccion.carro .row {
+    min-height: unset;
+}
+
+.Resumen-admin {
+    background-color: var(--color-header);
+    color: var(--color-texto-claro);
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.gestion-admin {
+    padding: 2rem;
+}
+
+.productos-admin {
+    padding: 2rem;
+}
+/*
+    ANIMACIONES
+*/
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to   { transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+
+    /* Nav en columna */
+    .navegacion .nav-link {
+        padding: 0.3rem 0.5rem;
+    }
+
+    .navegacion a {
+        margin: 4px 0;
+    }
+
+     #usuario-activo {
+        font-size: 0.8rem;
+    }
+
+    /* Header más pequeño */
+    .encabezado {
+        min-height: 40vh;
+        text-align: center;
+    }
+
+     .encabezado h1 {
+        font-size: 1.5rem;
+    }
+
+     .encabezado .contenedor {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .Resumen-admin .contenedor {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Tarjetas ocupan todo el ancho */
+    .tarjeta {
+        width: 100%;
+    }
+
+    /* Contenedor más ancho */
+    .contenedor {
+        width: 95%;
+    }
+
+    /* Texto más pequeño */
+    .precio {
+        font-size: 1rem;
+    }
+      .contenedor-tarjetas {
+        grid-template-columns: 1fr; /* 1 columna en móvil */
+    }
+
+    .contenedor-beneficios {
+        grid-template-columns: 1fr; /* ← 1 columna en móvil */
+    }
+
+    .gestion-admin,
+    .productos-admin {
+        overflow-x: auto; /* scroll horizontal en móvil */
+    }
+
+    .table {
+        font-size: 0.75rem; /* texto más pequeño */
+    }
+}

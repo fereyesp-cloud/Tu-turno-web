@@ -1,0 +1,77 @@
+<!-- HEADER -->
+<header class="encabezado" id="inicio">
+  <div class="contenedor encabezado-contenido">
+    <h1>Tu turno web</h1>
+    <p>Bienvenido a Tu Turno Web</p>
+    <a href="#menu" class="boton-principal">ver menú</a>
+    <a routerLink="/registro" class="boton-principal">Registrarse</a>
+  </div>
+</header>
+
+<!-- NAVBAR -->
+<app-navbar></app-navbar>
+
+<main>
+  <!-- QUIÉNES SOMOS -->
+  <section class="seccion nosotros" id="nosotros">
+    <div class="contenedor">
+      <h2>Quiénes somos</h2>
+      <p>En Tu turno web somos una PYME que se encarga de mostrar y vender distintos tipos de juegos para la familia o amistades</p>
+    </div>
+  </section>
+
+  <!-- CATEGORÍAS -->
+  <section class="seccion menu" id="menu">
+    <div class="contenedor">
+      <h2>Categorías destacadas</h2>
+      <p class="texto-intro">juegos con mayor popularidad</p>
+      <div class="alert alert-success" *ngIf="mensajeCarrito">{{ mensajeCarrito }}</div>
+      <div class="contenedor-tarjetas">
+
+        <article class="tarjeta" *ngFor="let juego of juegosDestacados">
+          <img [src]="juego.imagen" [alt]="juego.nombre">
+          <div class="tarjeta-contenido">
+            <span class="categoria">{{ juego.categoria }}</span>
+            <h3>{{ juego.nombre }}</h3>
+            <p>{{ juego.descripcion }}</p>
+            <p class="precio">{{ juego.precio }}</p>
+            <p class="descuento">10% con pagos en transferencia</p>
+            <a [routerLink]="juego.link">Ver juegos</a>
+            <button class="btn btn-primary" (click)="agregarAlCarrito(juego.nombre, juego.precioData, juego.imagen)">🛒 Agregar al carrito</button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFICIOS -->
+  <section class="seccion beneficios" id="beneficios">
+    <div class="contenedor">
+      <h2>¿Por qué elegirnos?</h2>
+      <div class="contenedor-beneficios">
+        <article class="beneficios" *ngFor="let beneficio of beneficios">
+          <h3>{{ beneficio.titulo }}</h3>
+          <p>{{ beneficio.descripcion }}</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="seccion contacto" id="contacto">
+    <div class="contenedor">
+      <h2>Contacto</h2>
+      <p>Visitanos de lunes a viernes entre 08:30 y 19:00 hrs</p>
+      <p>Dirección: Avenida 11 de julio, Santiago</p>
+      <a routerLink="/" class="boton-secundario">volver al inicio</a>
+    </div>
+  </section>
+
+  
+</main>
+
+<!-- FOOTER -->
+<footer class="pie-pagina">
+  <p>© 2026 Tu turno Web — Ejemplo académico DSY2202</p>
+</footer>

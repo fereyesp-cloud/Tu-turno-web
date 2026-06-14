@@ -1,0 +1,81 @@
+<header class="encabezado" id="inicio">
+  <div class="contenedor encabezado-contenido">
+    <h1>Registro - Tu turno web</h1>
+    <p>Bienvenido a Tu Turno Web</p>
+  </div>
+</header>
+
+<app-navbar></app-navbar>
+
+<main>
+  <section class="seccion registro">
+    <div class="contenedor">
+      <h2>Registro</h2>
+      <h4>Campos obligatorios *</h4>
+      <div>
+        <div class="mb-3">
+          <label class="form-label">Nombre completo *</label>
+          <input type="text" class="form-control" [class.is-invalid]="errorNombre" placeholder="Ingresa tu nombre" [(ngModel)]="nombre">
+          <div class="invalid-feedback">{{ errorNombre }}</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Nombre de usuario *</label>
+          <input type="text" class="form-control" [class.is-invalid]="errorNombreUsuario" placeholder="Ingrese nombre de usuario" [(ngModel)]="nombreUsuario">
+          <div class="invalid-feedback">{{ errorNombreUsuario }}</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Correo *</label>
+          <input type="text" class="form-control" [class.is-invalid]="errorCorreo" placeholder="ejemplo@example.cl" [(ngModel)]="correo">
+          <div class="invalid-feedback">{{ errorCorreo }}</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Contraseña *</label>
+          <div class="input-group">
+            <input [type]="verContrasena ? 'text' : 'password'" class="form-control" [class.is-invalid]="errorContrasena" placeholder="Contraseña" [(ngModel)]="contrasena">
+            <button type="button" class="btn btn-outline-secondary" (click)="toggleVerContrasena()">👁</button>
+          </div>
+          <div class="text-danger small" *ngIf="errorContrasena">{{ errorContrasena }}</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Repetir contraseña *</label>
+          <div class="input-group">
+            <input [type]="verConfirmar ? 'text' : 'password'" class="form-control" [class.is-invalid]="errorConfirmarContrasena" placeholder="Contraseña" [(ngModel)]="confirmarContrasena">
+            <button type="button" class="btn btn-outline-secondary" (click)="toggleVerConfirmar()">👁</button>
+          </div>
+          <div class="text-danger small" *ngIf="errorConfirmarContrasena">{{ errorConfirmarContrasena }}</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Fecha de nacimiento *</label>
+          <input type="date" class="form-control" [class.is-invalid]="errorFecha" [(ngModel)]="fechaNacimiento">
+          <div class="invalid-feedback">{{ errorFecha }}</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Dirección</label>
+          <input type="text" class="form-control" placeholder="Dirección" [(ngModel)]="direccion">
+          <div class="col-12 mt-2">
+            <label class="form-label fw-semibold">Departamento, casa</label>
+            <input type="text" class="form-control" placeholder="apto 48, torre 6" [(ngModel)]="detalle">
+          </div>
+          <div class="col-md-6 mt-2">
+            <label class="form-label fw-semibold">Comuna</label>
+            <input type="text" class="form-control" [(ngModel)]="ciudad">
+          </div>
+          <div class="col-md-4 mt-2">
+            <label class="form-label fw-semibold">Región</label>
+            <select class="form-select" [(ngModel)]="region">
+              <option value="" disabled>Selecciona...</option>
+              <option *ngFor="let r of regiones" [value]="r.valor">{{ r.nombre }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="alert alert-success" *ngIf="mensajeExito">{{ mensajeExito }}</div>
+        <button type="button" class="btn btn-primary" (click)="registrarse()">Registrarse</button>
+        <button type="button" class="btn btn-secondary ms-2" (click)="limpiar()">Limpiar</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pie-pagina">
+  <p>© 2026 Tu turno Web — Ejemplo académico DSY2202</p>
+</footer>

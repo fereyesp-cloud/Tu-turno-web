@@ -1,0 +1,30 @@
+<header class="encabezado" id="inicio">
+  <div class="contenedor encabezado-contenido">
+    <h1>Tu turno web</h1>
+    <p>Bienvenido a Tu Turno Web</p>
+    <a routerLink="/registro" class="boton-principal">Registrarse</a>
+  </div>
+</header>
+
+<app-navbar></app-navbar>
+
+<main>
+  <section class="recuperar-contrasena">
+    <div class="contenedor">
+      <h2>Recuperar contraseña</h2>
+      <div>
+        <div class="mb-3">
+          <label class="form-label">Correo</label>
+          <input type="text" class="form-control" [class.is-invalid]="errorCorreo" placeholder="ejemplo@example.cl" [(ngModel)]="correo">
+          <div class="invalid-feedback">{{ errorCorreo }}</div>
+        </div>
+        <div class="alert alert-success" *ngIf="mensajeExito">{{ mensajeExito }}</div>
+        <button type="button" class="btn btn-primary" (click)="enviarCorreo()">Enviar correo</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pie-pagina">
+  <p>© 2026 Tu turno Web — Ejemplo académico DSY2202</p>
+</footer>

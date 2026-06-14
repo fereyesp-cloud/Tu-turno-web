@@ -1,0 +1,43 @@
+<header class="encabezado" id="perfil">
+  <div class="contenedor encabezado-contenido">
+    <h1>Mi perfil - Tu turno web</h1>
+    <p>Bienvenido</p>
+  </div>
+</header>
+
+<app-navbar></app-navbar>
+
+<main>
+  <section class="seccion perfil">
+    <div class="contenedor">
+      <div>
+        <div class="mb-3">
+          <label class="form-label">Nombre completo</label>
+          <input type="text" class="form-control" [(ngModel)]="nombre">
+          <div class="invalid-feedback">{{ errorNombrePerfil }}</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Nombre de usuario</label>
+          <input type="text" class="form-control" [(ngModel)]="nombreUsuario">
+          <div class="invalid-feedback"> {{ errorNombreUsuarioPerfil }}</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Correo</label>
+          <input type="text" class="form-control" [(ngModel)]="correo">
+          <div class="invalid-feedback"> {{ errorCorreoPerfil }} </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Fecha de nacimiento</label>
+          <input type="date" class="form-control" [(ngModel)]="fechaNacimiento">
+          <div class="invalid-feedback"> {{ errorFechaPerfil }}</div>
+        </div>
+        <div class="alert alert-success mt-3" *ngIf="mensajeExito">{{ mensajeExito }}</div>
+        <button type="button" class="btn btn-primary" (click)="guardarCambios()">Guardar cambios</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pie-pagina">
+  <p>© 2026 Tu turno Web — Ejemplo académico DSY2202</p>
+</footer>

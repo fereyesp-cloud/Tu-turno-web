@@ -1,0 +1,52 @@
+<header class="encabezado" id="inicio">
+  <div class="contenedor encabezado-contenido">
+    <h1>Carro de compra - Tu turno web</h1>
+    <p>Bienvenido a Tu Turno Web</p>
+    <a routerLink="/registro" class="boton-principal">Registrarse</a>
+  </div>
+</header>
+
+<app-navbar></app-navbar>
+
+<main>
+  <section class="seccion carro">
+    <div class="contenedor">
+      <h2>Carro de compras</h2>
+
+      <div *ngIf="items.length === 0 && !mensajeExito">
+        <p>No hay productos en el carrito.</p>
+      </div>
+
+      <div *ngIf="items.length > 0">
+        <div *ngFor="let producto of items" class="card mb-2">
+          <div class="row g-0 align-items-center">
+            <div class="col-3 col-md-1">
+              <img [src]="producto.imagen" class="img-fluid p-2">
+            </div>
+            <div class="col-9 col-md-11">
+              <div class="card-body py-2">
+                <h6 class="mb-1">{{ producto.nombre }}</h6>
+                <p class="precio mb-0">${{ producto.precio | number:'1.0-0' }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="total-carro mt-3">
+          <h4>Total: ${{ total | number:'1.0-0' }}</h4>
+        </div>
+
+        <div class="alert alert-danger mt-3" *ngIf="mensajeVacio">{{ mensajeVacio }}</div>
+
+        <button class="btn btn-danger me-2 mt-3" (click)="vaciarCarrito()">Vaciar carrito</button>
+        <button class="btn btn-success mt-3" (click)="finalizarCompra()">Finalizar compra</button>
+      </div>
+
+      <div class="alert alert-success mt-3" *ngIf="mensajeExito">{{ mensajeExito }}</div>
+    </div>
+  </section>
+</main>
+
+<footer class="pie-pagina">
+  <p>© 2026 Tu turno Web — Ejemplo académico DSY2202</p>
+</footer>

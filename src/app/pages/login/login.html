@@ -1,0 +1,39 @@
+<header class="encabezado" id="inicio">
+  <div class="contenedor encabezado-contenido">
+    <h1>Login - Tu turno web</h1>
+    <p>Bienvenido a Tu Turno Web</p>
+    <a routerLink="/registro" class="boton-principal">Registrarse</a>
+  </div>
+</header>
+
+<app-navbar></app-navbar>
+
+<main>
+  <section class="login">
+    <div class="contenedor">
+      <h2>Login</h2>
+      <div>
+        <div class="mb-3">
+          <label class="form-label">Nombre de usuario</label>
+          <input type="text" class="form-control" [class.is-invalid]="errorUsuario" placeholder="Usuario" [(ngModel)]="username">
+          <div class="invalid-feedback">{{ errorUsuario }}</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Contraseña</label>
+          <div class="input-group">
+            <input [type]="verContrasena ? 'text' : 'password'" class="form-control" [class.is-invalid]="errorContrasena" placeholder="Contraseña" [(ngModel)]="contrasena">
+            <button type="button" class="btn btn-outline-secondary" (click)="toggleVerContrasena()">👁</button>
+          </div>
+          <div class="text-danger small" *ngIf="errorContrasena">{{ errorContrasena }}</div>
+        </div>
+        <div class="alert alert-danger" *ngIf="mensajeError">{{ mensajeError }}</div>
+        <button type="button" class="btn btn-primary" (click)="ingresar()">Ingresar</button>
+        <a routerLink="/recuperar-contrasena" class="btn btn-secondary ms-2">Recuperar contraseña</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pie-pagina">
+  <p>© 2026 Tu turno Web — Ejemplo académico DSY2202</p>
+</footer>

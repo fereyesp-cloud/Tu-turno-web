@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-xl navegacion">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link" routerLink="/juegos-rol">Juegos de rol</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/juegos-familiares">Juegos familiares</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/juegos-estrategia">Juegos de estrategia</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/juegos-fiesta">Juegos de fiesta</a></li>
+        <li class="nav-item" *ngIf="!session.estaLogueado()"><a class="nav-link" routerLink="/login">Login</a></li>
+        <li class="nav-item" *ngIf="!session.estaLogueado()"><a class="nav-link" routerLink="/registro">Registrarse</a></li>
+        <li class="nav-item" *ngIf="session.estaLogueado()">
+          <a class="nav-link">👤 {{ session.getUsuarioActivo()?.nombreUsuario }}</a>
+        </li>
+        <li class="nav-item" *ngIf="session.estaLogueado()">
+          <a class="nav-link" routerLink="/perfil">Mi perfil</a>
+        </li>
+        <li class="nav-item" *ngIf="session.estaLogueado()">
+          <a class="nav-link" href="#" (click)="cerrarSesion()">Cerrar sesión</a>
+        </li>
+        <li class="nav-item"><a class="nav-link" routerLink="/carrito">🛒 Carrito</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
