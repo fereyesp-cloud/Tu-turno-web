@@ -12,66 +12,84 @@
     <div class="contenedor">
       <h2>Registro</h2>
       <h4>Campos obligatorios *</h4>
-      <div>
+      <form [formGroup]="formularioRegistro" (ngSubmit)="registro()">
         <div class="mb-3">
           <label class="form-label">Nombre completo *</label>
-          <input type="text" class="form-control" [class.is-invalid]="errorNombre" placeholder="Ingresa tu nombre" [(ngModel)]="nombre">
-          <div class="invalid-feedback">{{ errorNombre }}</div>
+          <input type="text" class="form-control" formControlName="nombre" placeholder="Ingresa tu nombre"
+            [class.is-invalid]="formularioRegistro.get('nombre')?.invalid && formularioRegistro.get('nombre')?.touched">
+          <div class="invalid-feedback">El nombre es obligatorio</div>
         </div>
         <div class="mb-3">
           <label class="form-label">Nombre de usuario *</label>
-          <input type="text" class="form-control" [class.is-invalid]="errorNombreUsuario" placeholder="Ingrese nombre de usuario" [(ngModel)]="nombreUsuario">
-          <div class="invalid-feedback">{{ errorNombreUsuario }}</div>
+          <input type="text" class="form-control" formControlName="nombreUsuario" placeholder="Ingrese nombre de usuario"
+            [class.is-invalid]="formularioRegistro.get('nombreUsuario')?.invalid && formularioRegistro.get('nombreUsuario')?.touched">
+          <div class="invalid-feedback">El nombre de usuario es obligatorio</div>
         </div>
         <div class="mb-3">
           <label class="form-label">Correo *</label>
-          <input type="text" class="form-control" [class.is-invalid]="errorCorreo" placeholder="ejemplo@example.cl" [(ngModel)]="correo">
-          <div class="invalid-feedback">{{ errorCorreo }}</div>
+          <input type="text" class="form-control" formControlName="correo" placeholder="ejemplo@example.cl"
+            [class.is-invalid]="formularioRegistro.get('correo')?.invalid && formularioRegistro.get('correo')?.touched">
+          <div class="invalid-feedback">
+            <span *ngIf="formularioRegistro.get('correo')?.errors?.['required']">El correo es obligatorio</span>
+            <span *ngIf="formularioRegistro.get('correo')?.errors?.['email']">El correo no tiene formato válido</span>
+          </div>
         </div>
         <div class="mb-3">
           <label class="form-label">Contraseña *</label>
           <div class="input-group">
-            <input [type]="verContrasena ? 'text' : 'password'" class="form-control" [class.is-invalid]="errorContrasena" placeholder="Contraseña" [(ngModel)]="contrasena">
+            <input [type]="verContrasena ? 'text' : 'password'" class="form-control" formControlName="contrasena" placeholder="Contraseña"
+              [class.is-invalid]="formularioRegistro.get('contrasena')?.invalid && formularioRegistro.get('contrasena')?.touched">
             <button type="button" class="btn btn-outline-secondary" (click)="toggleVerContrasena()">👁</button>
           </div>
-          <div class="text-danger small" *ngIf="errorContrasena">{{ errorContrasena }}</div>
+          <div class="text-danger small"
+            *ngIf="formularioRegistro.get('contrasena')?.invalid && formularioRegistro.get('contrasena')?.touched">
+            La contraseña debe tener entre 6 y 18 caracteres, una mayúscula y un número
+          </div>
         </div>
         <div class="mb-3">
           <label class="form-label">Repetir contraseña *</label>
           <div class="input-group">
-            <input [type]="verConfirmar ? 'text' : 'password'" class="form-control" [class.is-invalid]="errorConfirmarContrasena" placeholder="Contraseña" [(ngModel)]="confirmarContrasena">
+            <input [type]="verConfirmar ? 'text' : 'password'" class="form-control" formControlName="confirmarContrasena" placeholder="Contraseña"
+              [class.is-invalid]="formularioRegistro.get('confirmarContrasena')?.invalid && formularioRegistro.get('confirmarContrasena')?.touched">
             <button type="button" class="btn btn-outline-secondary" (click)="toggleVerConfirmar()">👁</button>
           </div>
-          <div class="text-danger small" *ngIf="errorConfirmarContrasena">{{ errorConfirmarContrasena }}</div>
+          <div class="text-danger small"
+            *ngIf="formularioRegistro.get('confirmarContrasena')?.errors?.['noCoincide']">
+            Las contraseñas no coinciden
+          </div>
         </div>
         <div class="mb-3">
           <label class="form-label">Fecha de nacimiento *</label>
-          <input type="date" class="form-control" [class.is-invalid]="errorFecha" [(ngModel)]="fechaNacimiento">
-          <div class="invalid-feedback">{{ errorFecha }}</div>
+          <input type="date" class="form-control" formControlName="fechaNacimiento"
+            [class.is-invalid]="formularioRegistro.get('fechaNacimiento')?.invalid && formularioRegistro.get('fechaNacimiento')?.touched">
+          <div class="invalid-feedback">
+            <span *ngIf="formularioRegistro.get('fechaNacimiento')?.errors?.['required']">La fecha es obligatoria</span>
+            <span *ngIf="formularioRegistro.get('fechaNacimiento')?.errors?.['menorEdad']">Debes tener al menos 13 años</span>
+          </div>
         </div>
         <div class="mb-3">
           <label class="form-label">Dirección</label>
-          <input type="text" class="form-control" placeholder="Dirección" [(ngModel)]="direccion">
+          <input type="text" class="form-control" formControlName="direccion" placeholder="Dirección">
           <div class="col-12 mt-2">
             <label class="form-label fw-semibold">Departamento, casa</label>
-            <input type="text" class="form-control" placeholder="apto 48, torre 6" [(ngModel)]="detalle">
+            <input type="text" class="form-control" formControlName="detalle" placeholder="apto 48, torre 6">
           </div>
           <div class="col-md-6 mt-2">
             <label class="form-label fw-semibold">Comuna</label>
-            <input type="text" class="form-control" [(ngModel)]="ciudad">
+            <input type="text" class="form-control" formControlName="ciudad">
           </div>
           <div class="col-md-4 mt-2">
             <label class="form-label fw-semibold">Región</label>
-            <select class="form-select" [(ngModel)]="region">
+            <select class="form-select" formControlName="region">
               <option value="" disabled>Selecciona...</option>
               <option *ngFor="let r of regiones" [value]="r.valor">{{ r.nombre }}</option>
             </select>
           </div>
         </div>
         <div class="alert alert-success" *ngIf="mensajeExito">{{ mensajeExito }}</div>
-        <button type="button" class="btn btn-primary" (click)="registrarse()">Registrarse</button>
+        <button type="submit" class="btn btn-primary">Registrarse</button>
         <button type="button" class="btn btn-secondary ms-2" (click)="limpiar()">Limpiar</button>
-      </div>
+      </form>
     </div>
   </section>
 </main>

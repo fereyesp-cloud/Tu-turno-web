@@ -12,15 +12,19 @@
   <section class="recuperar-contrasena">
     <div class="contenedor">
       <h2>Recuperar contraseña</h2>
-      <div>
+      <form [formGroup]="formularioRecuperar" (ngSubmit)="enviarCorreo()">
         <div class="mb-3">
           <label class="form-label">Correo</label>
-          <input type="text" class="form-control" [class.is-invalid]="errorCorreo" placeholder="ejemplo@example.cl" [(ngModel)]="correo">
-          <div class="invalid-feedback">{{ errorCorreo }}</div>
+          <input type="text" class="form-control" formControlName="correo" placeholder="ejemplo@example.cl"
+            [class.is-invalid]="formularioRecuperar.get('correo')?.invalid && formularioRecuperar.get('correo')?.touched">
+          <div class="invalid-feedback">
+            <span *ngIf="formularioRecuperar.get('correo')?.errors?.['required']">El correo es obligatorio</span>
+            <span *ngIf="formularioRecuperar.get('correo')?.errors?.['email']">El correo no tiene formato válido</span>
+          </div>
         </div>
         <div class="alert alert-success" *ngIf="mensajeExito">{{ mensajeExito }}</div>
-        <button type="button" class="btn btn-primary" (click)="enviarCorreo()">Enviar correo</button>
-      </div>
+        <button type="submit" class="btn btn-primary">Enviar correo</button>
+      </form>
     </div>
   </section>
 </main>

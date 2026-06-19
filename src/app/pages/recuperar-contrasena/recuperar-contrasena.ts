@@ -1,29 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { Navbar } from '../../shared/navbar/navbar';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-recuperar-contrasena',
-  imports: [RouterLink, NgIf, FormsModule, Navbar],
+  imports: [RouterLink, NgIf, Navbar, ReactiveFormsModule],
   templateUrl: './recuperar-contrasena.html',
   styleUrl: './recuperar-contrasena.css'
 })
-export class RecuperarContrasena {
+export class RecuperarContrasena implements OnInit{
 
-  correo: string = '';
-  mensajeError: string = '';
+  formularioRecuperar!: FormGroup; 
   mensajeExito: string = '';
-  errorCorreo: string = '';
+
+    constructor(private fb: FormBuilder) {}
+
+  ngOnInit(){
+    this.formularioRecuperar = this.fb.group({
+      correo:['',[Validators.required, Validators.email]]
+    })
+  }
 
   enviarCorreo() {
-    if (!this.correo) {
-      this.mensajeError = 'Por favor ingresa tu correo';
-      this.mensajeExito = '';
+    if (this.formularioRecuperar.invalid) {
+      this.formularioRecuperar.markAllAsTouched();
       return;
     }
-    this.mensajeError = '';
-    this.mensajeExito = 'Se ha enviado un correo con las instrucciones para recuperar tu contraseña.';
+
+    this.mensajeExito = 'Se ha enviado un correo de recuperación.';
   }
 }

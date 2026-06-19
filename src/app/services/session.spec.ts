@@ -1,48 +1,24 @@
-import { Injectable } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+import { SessionService } from './session';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class SessionService {
+describe('SessionService', () => {
+  let service: SessionService;
 
-  constructor() {
-    this.crearAdminSiNoExiste();
-  }
+  beforeEach(() => {
+    localStorage.clear();
+    sessionStorage.clear();
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(SessionService);
+  });
 
-  private crearAdminSiNoExiste() {
-    const usuarios = this.getUsuarios();
-    const adminExiste = usuarios.find((u: any) => u.nombreUsuario === 'admin');
-    if (!adminExiste) {
-      usuarios.push({
-        nombre: 'Administrador',
-        nombreUsuario: 'admin',
-        correo: 'admin@tuturno.cl',
-        contrasena: 'Admin123!',
-        fecha: '1990-01-01',
-        rol: 'admin'
-      });
-      localStorage.setItem('usuarios', JSON.stringify(usuarios));
-    }
-  }
+  it('debería crearse el servicio', () => {
+    expect(service).toBeTruthy();
+  });
 
-  getUsuarios(): any[] {
-    return JSON.parse(localStorage.getItem('usuarios') || '[]');
-  }
-
-  getUsuarioActivo(): any {
-    return JSON.parse(sessionStorage.getItem('usuarioActivo') || 'null');
-  }
-
-  cerrarSesion() {
-    sessionStorage.removeItem('usuarioActivo');
-  }
-
-  estaLogueado(): boolean {
-    return this.getUsuarioActivo() !== null;
-  }
-
-  esAdmin(): boolean {
-    const usuario = this.getUsuarioActivo();
-    return usuario !== null && usuario.rol === 'admin';
-  }
-}
+  it('debería crear automáticamente un usuario admin si no existe', () => {
+    const usuarios = service.getUsuarios();
+    const admin = usuarios.find((u: any) => u.nombreUsuario === 'admin');
+    expect(admin).toBeTruthy();
+    expect(admin.rol).toBe('admin');
+  });
+});

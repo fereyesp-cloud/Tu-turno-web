@@ -1,68 +1,56 @@
-import { Component } from '@angular/core';
-import { RouterLink, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterLink  } from '@angular/router';
 import { NgIf } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Navbar } from '../../shared/navbar/navbar';
 import { SessionService } from '../../services/session';
 
 @Component({
   selector: 'app-login',
-  imports: [RouterLink, NgIf, FormsModule, Navbar],
+  imports: [NgIf, ReactiveFormsModule, Navbar, RouterLink],
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
-export class Login {
+export class Login implements OnInit {
 
-    
-
-  username: string = '';
-  contrasena: string = '';
+  formularioLogin!: FormGroup;
   verContrasena: boolean = false;
-  errorUsuario: string = '';
-  errorContrasena: string = '';
   mensajeError: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router, private session: SessionService) {}
+
+  ngOnInit() {
+    this.formularioLogin = this.fb.group({
+      username: ['', Validators.required],
+      contrasena: ['', Validators.required]
+    });
+  }
 
   toggleVerContrasena() {
     this.verContrasena = !this.verContrasena;
   }
 
-  ingresar() {
-    let valido = true;
-
-    if (!this.username) {
-      this.errorUsuario = 'El usuario es obligatorio';
-      valido = false;
-    } else {
-      this.errorUsuario = '';
+  ingresar(): void {
+    if (this.formularioLogin.invalid) {
+      this.formularioLogin.markAllAsTouched();
+      return;
     }
 
-    if (!this.contrasena) {
-      this.errorContrasena = 'La contraseña es obligatoria';
-      valido = false;
-    } else {
-      this.errorContrasena = '';
-    }
+    const { username, contrasena } = this.formularioLogin.value;
+    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+    const usuarioEncontrado = usuarios.find((u: any) =>
+      u.nombreUsuario === username && u.contrasena === contrasena
+    );
 
-    if (valido) {
-      const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
-      const usuarioEncontrado = usuarios.find((u: any) =>
-        u.nombreUsuario === this.username && u.contrasena === this.contrasena
-      );
-
-      if (usuarioEncontrado) {
-        sessionStorage.setItem('usuarioActivo', JSON.stringify(usuarioEncontrado));
-        if (usuarioEncontrado.rol === 'admin') {
-          this.router.navigate(['/admin']);
-        } else {
-          this.router.navigate(['/']);
-        }
+    if (usuarioEncontrado) {
+      sessionStorage.setItem('usuarioActivo', JSON.stringify(usuarioEncontrado));
+      if (usuarioEncontrado.rol === 'admin') {
+        this.router.navigate(['/admin']);
       } else {
-        this.mensajeError = 'Usuario o contraseña incorrectos';
+        this.router.navigate(['/']);
       }
+    } else {
+      this.mensajeError = 'Usuario o contraseña incorrectos';
     }
   }
-
-  
 }

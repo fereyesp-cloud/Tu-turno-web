@@ -12,24 +12,29 @@
   <section class="login">
     <div class="contenedor">
       <h2>Login</h2>
-      <div>
+      <form [formGroup]="formularioLogin" (ngSubmit)="ingresar()">
         <div class="mb-3">
           <label class="form-label">Nombre de usuario</label>
-          <input type="text" class="form-control" [class.is-invalid]="errorUsuario" placeholder="Usuario" [(ngModel)]="username">
-          <div class="invalid-feedback">{{ errorUsuario }}</div>
+          <input type="text" class="form-control" formControlName="username" placeholder="Usuario"
+            [class.is-invalid]="formularioLogin.get('username')?.invalid && formularioLogin.get('username')?.touched">
+          <div class="invalid-feedback">El nombre de usuario es obligatorio</div>
         </div>
         <div class="mb-3">
           <label class="form-label">Contraseña</label>
           <div class="input-group">
-            <input [type]="verContrasena ? 'text' : 'password'" class="form-control" [class.is-invalid]="errorContrasena" placeholder="Contraseña" [(ngModel)]="contrasena">
+            <input [type]="verContrasena ? 'text' : 'password'" class="form-control" formControlName="contrasena" placeholder="Contraseña"
+              [class.is-invalid]="formularioLogin.get('contrasena')?.invalid && formularioLogin.get('contrasena')?.touched">
             <button type="button" class="btn btn-outline-secondary" (click)="toggleVerContrasena()">👁</button>
           </div>
-          <div class="text-danger small" *ngIf="errorContrasena">{{ errorContrasena }}</div>
+          <div class="text-danger small"
+            *ngIf="formularioLogin.get('contrasena')?.invalid && formularioLogin.get('contrasena')?.touched">
+            La contraseña es obligatoria
+          </div>
         </div>
         <div class="alert alert-danger" *ngIf="mensajeError">{{ mensajeError }}</div>
-        <button type="button" class="btn btn-primary" (click)="ingresar()">Ingresar</button>
+        <button type="submit" class="btn btn-primary">Ingresar</button>
         <a routerLink="/recuperar-contrasena" class="btn btn-secondary ms-2">Recuperar contraseña</a>
-      </div>
+      </form>
     </div>
   </section>
 </main>
