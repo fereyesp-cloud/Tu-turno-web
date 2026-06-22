@@ -6,8 +6,6 @@
   </div>
 </header>
 
-<app-navbar></app-navbar>
-
 <main>
   <section class="seccion juegos">
     <div class="contenedor">
@@ -19,6 +17,8 @@
 
   <section class="seccion lista" id="lista-familiar">
     <div class="contenedor">
+      <h2>Todos</h2>
+      <p>Todos los juegos de mesa</p>
       <div class="contenedor-tarjetas">
         <article class="tarjeta-lista" *ngFor="let juego of juegos">
           <img [src]="juego.imagen" [alt]="juego.nombre">

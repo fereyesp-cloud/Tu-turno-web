@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
-import { Navbar } from '../../shared/navbar/navbar';
 import { SessionService } from '../../services/session';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-perfil',
-  imports: [NgIf, Navbar, ReactiveFormsModule],
+  imports: [NgIf, ReactiveFormsModule],
   templateUrl: './perfil.html',
   styleUrl: './perfil.css'
 })

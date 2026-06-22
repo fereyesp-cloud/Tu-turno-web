@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
-import { Navbar } from '../../shared/navbar/navbar';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-recuperar-contrasena',
-  imports: [RouterLink, NgIf, Navbar, ReactiveFormsModule],
+  imports: [RouterLink, NgIf, ReactiveFormsModule],
   templateUrl: './recuperar-contrasena.html',
   styleUrl: './recuperar-contrasena.css'
 })

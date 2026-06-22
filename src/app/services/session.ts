@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SessionService {
+
+  private usuarioActivoSubject = new BehaviorSubject<any>(this.getUsuarioActivo());
+  usuarioActivo$ = this.usuarioActivoSubject.asObservable();
 
   constructor() {
     this.crearAdminSiNoExiste();
@@ -33,16 +37,22 @@ export class SessionService {
     return JSON.parse(sessionStorage.getItem('usuarioActivo') || 'null');
   }
 
+  setUsuarioActivo(usuario: any) {
+    sessionStorage.setItem('usuarioActivo', JSON.stringify(usuario));
+    this.usuarioActivoSubject.next(usuario);
+  }
+
   cerrarSesion() {
     sessionStorage.removeItem('usuarioActivo');
+    this.usuarioActivoSubject.next(null);
   }
 
   estaLogueado(): boolean {
-    return this.getUsuarioActivo() !== null;
+    return this.usuarioActivoSubject.getValue() !== null;
   }
 
   esAdmin(): boolean {
-    const usuario = this.getUsuarioActivo();
+    const usuario = this.usuarioActivoSubject.getValue();
     return usuario !== null && usuario.rol === 'admin';
   }
 

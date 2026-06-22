@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgIf, NgFor, DecimalPipe  } from '@angular/common';
-import { Navbar } from '../../shared/navbar/navbar';
 import { SessionService } from '../../services/session';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-carrito',
-  imports: [RouterLink, NgIf, NgFor, DecimalPipe, Navbar],
+  imports: [RouterLink, NgIf, NgFor, DecimalPipe],
   templateUrl: './carrito.html',
   styleUrl: './carrito.css'
 })

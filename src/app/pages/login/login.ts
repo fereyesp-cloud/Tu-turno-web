@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink  } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Navbar } from '../../shared/navbar/navbar';
 import { SessionService } from '../../services/session';
 
 @Component({
   selector: 'app-login',
-  imports: [NgIf, ReactiveFormsModule, Navbar, RouterLink],
+  imports: [NgIf, ReactiveFormsModule, RouterLink],
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
@@ -43,7 +42,7 @@ export class Login implements OnInit {
     );
 
     if (usuarioEncontrado) {
-      sessionStorage.setItem('usuarioActivo', JSON.stringify(usuarioEncontrado));
+      this.session.setUsuarioActivo(usuarioEncontrado);
       if (usuarioEncontrado.rol === 'admin') {
         this.router.navigate(['/admin']);
       } else {

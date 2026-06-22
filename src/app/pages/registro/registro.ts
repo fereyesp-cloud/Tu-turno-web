@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgIf, NgFor } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Navbar } from '../../shared/navbar/navbar';
 import { SessionService } from '../../services/session';
 
 @Component({
   selector: 'app-registro',
-  imports: [NgIf, NgFor, ReactiveFormsModule, Navbar],
+  imports: [NgIf, NgFor, ReactiveFormsModule],
   templateUrl: './registro.html',
   styleUrl: './registro.css'
 })

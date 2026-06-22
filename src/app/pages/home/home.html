@@ -8,9 +8,6 @@
   </div>
 </header>
 
-<!-- NAVBAR -->
-<app-navbar></app-navbar>
-
 <main>
   <!-- QUIÉNES SOMOS -->
   <section class="seccion nosotros" id="nosotros">
@@ -36,8 +33,10 @@
             <p>{{ juego.descripcion }}</p>
             <p class="precio">{{ juego.precio }}</p>
             <p class="descuento">10% con pagos en transferencia</p>
-            <a [routerLink]="juego.link">Ver juegos</a>
-            <button class="btn btn-primary" (click)="agregarAlCarrito(juego.nombre, juego.precioData, juego.imagen)">🛒 Agregar al carrito</button>
+            <div class="d-flex gap-2 align-items-center">
+              <a [routerLink]="juego.link" class="btn btn-outline-primary">Ver juegos</a>
+              <button class="btn btn-primary" (click)="agregarAlCarrito(juego.nombre, juego.precioData, juego.imagen)">🛒 Agregar al carrito</button>
+            </div>
           </div>
         </article>
 
