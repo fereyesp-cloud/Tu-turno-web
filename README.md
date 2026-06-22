@@ -1,6 +1,6 @@
 # Tu Turno Web
 
-Aplicación web de tienda de juegos de mesa desarrollada con Angular 19+, migrada desde un proyecto HTML/CSS/Bootstrap puro como parte del curso DSY2202.
+Aplicación web de tienda de juegos de mesa desarrollada con Angular 22, migrada desde un proyecto HTML/CSS/Bootstrap puro como parte del curso DSY2202.
 
 ## Descripción
 
@@ -8,20 +8,21 @@ Tu Turno Web es una PYME ficticia que vende juegos de mesa. La aplicación permi
 
 ## Tecnologías utilizadas
 
-- Angular (standalone components)
+- Angular 22 (standalone components)
 - Reactive Forms (`ReactiveFormsModule`)
 - Bootstrap 5.3
 - TypeScript
 - HTML5 / CSS3
 - localStorage / sessionStorage
 - Vitest (pruebas unitarias)
+- RxJS (`BehaviorSubject`)
 
 ## Funcionalidades
 
-- Catálogo de juegos por categoría (Rol, Familiares, Estrategia, Fiesta)
+- Catálogo dinámico de juegos por categoría con ruta `/juegos/:categoria`
 - Registro de usuarios con formulario reactivo y validaciones
 - Login con redirección según rol (cliente / admin)
-- Navbar dinámico según sesión activa
+- Navbar global reactivo según sesión activa
 - Carrito de compras persistente en localStorage
 - Perfil de usuario editable con formulario reactivo y validaciones
 - Panel de administración con gestión de usuarios y productos
@@ -52,7 +53,7 @@ Abre el navegador en `http://localhost:4200/`
 
 ## Pruebas unitarias
 
-El proyecto incluye pruebas unitarias ejecutadas con Vitest, siguiendo la misma sintaxis (`describe`, `it`, `expect`) que Jasmine.
+El proyecto usa Vitest como framework de pruebas, que Angular 22 incluye por defecto en reemplazo de Karma/Jasmine. Vitest utiliza la misma sintaxis que Jasmine (`describe`, `it`, `expect`, `beforeEach`), por lo que es funcionalmente equivalente. Se intentó instalar Karma pero es incompatible con Angular 22 (solo soporta hasta Angular 21).
 
 Para ejecutar las pruebas:
 
@@ -60,11 +61,13 @@ Para ejecutar las pruebas:
 ng test
 ```
 
-**Pruebas implementadas:**
+**Resultado:** 16 archivos de prueba, 20 tests, todos en verde ✅
+
+**Pruebas principales implementadas:**
 
 | Archivo | Prueba | Descripción |
 |---|---|---|
-| `registro.spec.ts` | Formulario inválido con campos vacíos | Verifica que el formulario reactivo de registro no sea válido si los campos obligatorios están vacíos |
+| `registro.spec.ts` | Formulario inválido con campos vacíos | Verifica que el formulario reactivo no sea válido si los campos obligatorios están vacíos |
 | `registro.spec.ts` | Validación de formato de correo | Verifica que el campo correo sea inválido si no cumple el formato de email |
 | `session.spec.ts` | Creación del servicio | Verifica que el `SessionService` se instancie correctamente |
 | `session.spec.ts` | Creación automática del admin | Verifica que el servicio cree un usuario admin por defecto si no existe en localStorage |
@@ -92,13 +95,7 @@ src/app/
 
 │   ├── home/
 
-│   ├── juegos-rol/
-
-│   ├── juegos-familiares/
-
-│   ├── juegos-estrategia/
-
-│   ├── juegos-fiesta/
+│   ├── catalogo/
 
 │   ├── login/
 
@@ -118,7 +115,9 @@ src/app/
 
 └── services/
 
-└── session.ts
+├── session.ts
+
+└── producto.ts
 
 ## Directivas y características Angular utilizadas
 
@@ -129,6 +128,9 @@ src/app/
 - `(click)`, `(ngSubmit)` — manejo de eventos
 - `routerLink` — navegación entre páginas
 - `OnInit` — lifecycle hook para inicialización de formularios y carga de datos
+- `ActivatedRoute` — lectura de parámetros de ruta dinámica
+- `BehaviorSubject` — estado reactivo de sesión en tiempo real
+- `ChangeDetectorRef` — detección manual de cambios en la vista
 
 ## Autor
 
