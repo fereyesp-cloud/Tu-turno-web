@@ -1,19 +1,36 @@
 import { Injectable } from '@angular/core';
 
+/**
+ * interfaz que defiuine la estructura de un producto
+ */
 export interface Producto {
+  /** Nombre del juego */
   nombre: string;
+   /** Categoría del juego */
   categoria: string;
+  /** Descripción del juego */
   descripcion: string;
+   /** Precio formateado del juego */
   precio: string;
+  /** Precio numérico para cálculos */
   precioData: string;
+  /** Información de descuento */
   descuento: string;
+  /** Ruta de la imagen del juego */
   imagen: string;
 }
 
+/**
+ * Servicio para la gestión de productos de la tienda
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class ProductoService {
+
+  /**
+   * Gestion de los producto de juegos de rol
+   */
 
   private juegosRol: Producto[] = [
     {
@@ -45,6 +62,10 @@ export class ProductoService {
     }
   ];
 
+  /**
+   * Gestion de los producto de juegos familiares
+   */
+
   private juegosFamiliares: Producto[] = [
     {
       nombre: 'Basta',
@@ -74,6 +95,10 @@ export class ProductoService {
       imagen: 'img/partyFamily .webp'
     }
   ];
+
+  /**
+   * Se gestiona todos los productos de juegos de estrategia
+   */
 
   private juegosEstrategia: Producto[] = [
     {
@@ -105,6 +130,10 @@ export class ProductoService {
     }
   ];
 
+  /**
+   * Se gestiona todos los productos de juegos de fiesta
+   */
+
   private juegosFiesta: Producto[] = [
     {
       nombre: 'Si te ríes, tomas',
@@ -135,21 +164,45 @@ export class ProductoService {
     }
   ];
 
+  /**
+   * Obtiene todos los juegos de rol
+   * @returns obtiene todos los juegos asociados
+   */
+
   getJuegosRol(): Producto[] {
     return this.juegosRol;
   }
+  /**
+   * Obtiene todos los juegos familiares
+   * @returns obtiene todos los juegos asociados
+   */
 
   getJuegosFamiliares(): Producto[] {
     return this.juegosFamiliares;
   }
 
+  /**
+   * Obtiene todos los juegos de estrategia
+   * @returns obtiene todos los juegos asociados
+   */
+
   getJuegosEstrategia(): Producto[] {
     return this.juegosEstrategia;
   }
 
+  /**
+   * Obtiene todos los juegos de fiesta
+   * @returns obtiene todos los juegos asociados
+   */
+
   getJuegosFiesta(): Producto[] {
     return this.juegosFiesta;
   }
+
+  /**
+  * Obtiene los juegos destacados (primero de cada categoría)
+  * @returns Array con un juego destacado de cada categoría
+  */
 
   getDestacados(): Producto[] {
     return [
@@ -159,6 +212,11 @@ export class ProductoService {
       this.juegosFiesta[0]
     ];
   }
+
+  /**
+  * Obtiene todos los juegos disponibles en la tienda
+  * @returns Array con todos los juegos de todas las categorías
+  */
 
   getTodos(): Producto[] {
     return [

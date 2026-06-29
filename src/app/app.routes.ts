@@ -8,6 +8,12 @@ import { Carrito } from './pages/carrito/carrito';
 import { Perfil } from './pages/perfil/perfil';
 import { AdminDashboard } from './pages/admin-dashboard/admin-dashboard';
 
+/**
+ * Definición de rutas de la aplicación Tu Turno Web.
+ * Incluye rutas para home, catálogo dinámico por categoría,
+ * autenticación, carrito, perfil y panel de administración.
+ */
+
 export const routes: Routes = [
   { path: '', component: Home },
   { path: 'juegos/:categoria', component: Catalogo },

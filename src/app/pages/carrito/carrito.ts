@@ -4,6 +4,12 @@ import { NgIf, NgFor, DecimalPipe  } from '@angular/common';
 import { SessionService } from '../../services/session';
 import { Router } from '@angular/router';
 
+
+/**
+ * Componente  del carro de tu turno web
+ * contine el contenido del carro
+ * agregar productos, vaciar producto y finalizar compra
+ */
 @Component({
   selector: 'app-carrito',
   imports: [RouterLink, NgIf, NgFor, DecimalPipe],
@@ -11,22 +17,35 @@ import { Router } from '@angular/router';
   styleUrl: './carrito.css'
 })
 export class Carrito implements OnInit {
-
+  /** Lista de productos en el carrito */
   items: any[] = [];
+  /** Total calculado de los productos en el carrito */
   total: number = 0;
+  /** Mensaje de confirmación de compra exitosa */
   mensajeExito: string = '';
+  /** Mensaje de advertencia cuando el carrito está vacío */
   mensajeVacio: string = '';
 
   constructor(private session: SessionService, private router: Router) {}
 
+  /**
+   * inicializacion del carro
+   */
   ngOnInit() {
     this.cargarCarrito();
   }
+  /**
+  * Funcion de carga los productos del carrito desde localStorage y calcula el total
+  */
 
   cargarCarrito() {
     this.items = this.session.getCarrito();
     this.total = this.items.reduce((sum, p) => sum + parseInt(p.precio), 0);
   }
+
+  /**
+   * funcion para vaciar productos del carro
+   */
 
   vaciarCarrito() {
     this.session.vaciarCarrito();
@@ -34,6 +53,10 @@ export class Carrito implements OnInit {
     this.total = 0;
     this.mensajeExito = '';
   }
+
+  /**
+  *Funcion de elimina todos los productos del carrito
+  */
 
   finalizarCompra() {
     if (this.items.length === 0) {

@@ -4,6 +4,11 @@ import { NgFor, NgIf } from '@angular/common';
 import { SessionService } from '../../services/session';
 import { ProductoService, Producto } from '../../services/producto';
 
+
+/**
+ * Componente del catalogo
+ * continen las descripcion del los productos del catalogo
+ */
 @Component({
   selector: 'app-catalogo',
   imports: [RouterLink, NgFor, NgIf],
@@ -12,10 +17,16 @@ import { ProductoService, Producto } from '../../services/producto';
 })
 export class Catalogo implements OnInit {
 
+  /** Lista de juegos cargados según la categoría activa */
   juegos: Producto[] = [];
+  /** Categoría activa obtenida desde los parámetros de la ruta */
   categoria: string = '';
+  /** Mensaje temporal que confirma que un producto fue agregado al carrito */
   mensajeCarrito: string = '';
 
+  /**
+   * Muestra la seccion de beneficios en las paginas
+   */
   beneficios = [
     { titulo: 'Juegos populares', descripcion: 'Siempre ofrecemos los juegos más jugados del momento' },
     { titulo: 'Entregas inmediatas', descripcion: 'Trabajamos con red express para los envíos' },
@@ -29,6 +40,10 @@ export class Catalogo implements OnInit {
     private cdr: ChangeDetectorRef
   ) {}
 
+
+  /**
+   * inicializacion de los parametros para la categoria
+   */
   ngOnInit() {
     this.route.params.subscribe(params => {
       const cat = params['categoria'];
@@ -37,6 +52,11 @@ export class Catalogo implements OnInit {
       this.cdr.detectChanges();
     });
   }
+
+  /**
+  * Carga los juegos correspondientes a la categoría recibida por parámetro de ruta
+  * @param categoria Nombre de la categoría a mostrar
+  */
 
   cargarJuegos(categoria: string) {
     switch (categoria) {
@@ -57,6 +77,11 @@ export class Catalogo implements OnInit {
     }
   }
 
+  /**
+  * Retorna el título legible según la categoría activa
+  * @returns Título de la categoría
+  */
+
   getTitulo(): string {
     const titulos: { [key: string]: string } = {
       'rol': 'Juegos de Rol',
@@ -66,6 +91,13 @@ export class Catalogo implements OnInit {
     };
     return titulos[this.categoria] || 'Juegos';
   }
+
+  /**
+  * Agrega un producto al carrito de compras
+  * @param nombre Nombre del producto
+  * @param precio Precio del producto
+  * @param imagen Ruta de la imagen del producto
+  */
 
   agregarAlCarrito(nombre: string, precio: string, imagen: string) {
     this.session.agregarAlCarrito(nombre, precio, imagen);

@@ -4,6 +4,10 @@ import { NgIf } from '@angular/common';
 import { SessionService } from '../../services/session';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+/**
+ * Componente para la pagine perfil
+ * listar y agregar al carro los juegos
+ */
 @Component({
   selector: 'app-perfil',
   imports: [NgIf, ReactiveFormsModule],
@@ -12,11 +16,16 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 })
 export class Perfil implements OnInit {
 
+  /**Incializacion del formulario del perfil */
   formularioPerfil!: FormGroup;
+  /**Mensaje de exito al editar el perfil */
   mensajeExito: string = '';
 
   constructor(private fb: FormBuilder, private session: SessionService, private router: Router) {}
 
+  /**
+   * Inicializacion del perfil
+   */
   ngOnInit() {
     const usuarioActivo = this.session.getUsuarioActivo();
 
@@ -33,6 +42,10 @@ export class Perfil implements OnInit {
       fechaNacimiento: [usuarioActivo.fecha, Validators.required]
     });
   }
+
+  /**
+   * Funcion para guardar los cambios del formulario del perfil
+   */
 
   guardarCambios() {
     if (this.formularioPerfil.invalid) {

@@ -4,6 +4,10 @@ import { NgFor, NgIf } from '@angular/common';
 import { SessionService } from '../../services/session';
 import { ProductoService, Producto } from '../../services/producto';
 
+/**
+ * Componente para el juegos familiares
+ * listar y agregar al carro los juegos
+ */
 @Component({
   selector: 'app-juegos-familiares',
   imports: [RouterLink, NgFor, NgIf],
@@ -11,10 +15,11 @@ import { ProductoService, Producto } from '../../services/producto';
   styleUrl: './juegos-familiares.css'
 })
 export class JuegosFamiliares implements OnInit {
-
+   /** Lista de juegos */
   juegos: Producto[] = [];
+  /**mensaje de exito al agregar al carrito */
   mensajeCarrito: string = '';
-
+   /** Lista de beneficios mostrados en la sección de beneficios */
   beneficios = [
     { titulo: 'Juegos populares', descripcion: 'Siempre ofrecemos los juegos más jugados del momento' },
     { titulo: 'Entregas inmediatas', descripcion: 'Trabajamos con red express para los envíos' },
@@ -22,10 +27,19 @@ export class JuegosFamiliares implements OnInit {
   ];
 
   constructor(public session: SessionService, private productoService: ProductoService) {}
-
+  /**
+  * Inicialización del juego familiares — carga los juegos de familiares
+  */
   ngOnInit() {
     this.juegos = this.productoService.getJuegosFamiliares();
   }
+
+  /**
+   * Funciona de agregar productos al carro desde juegos familiares
+   * @param nombre Nombre del producto
+   * @param precio precio del producto
+   * @param imagen imegen del producto
+   */
 
   agregarAlCarrito(nombre: string, precio: string, imagen: string) {
     this.session.agregarAlCarrito(nombre, precio, imagen);

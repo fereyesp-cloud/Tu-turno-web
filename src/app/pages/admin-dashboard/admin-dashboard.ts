@@ -3,6 +3,11 @@ import { Router } from '@angular/router';
 import { NgFor } from '@angular/common';
 import { SessionService } from '../../services/session';
 
+
+/**
+ * Componente de la vista admin
+ * contiene los productos de la tienda y cerrar la session
+ */
 @Component({
   selector: 'app-admin-dashboard',
   imports: [NgFor],
@@ -11,8 +16,10 @@ import { SessionService } from '../../services/session';
 })
 export class AdminDashboard implements OnInit {
 
+  /**Lista de usuarios */
   usuarios: any[] = [];
 
+  /**Listar los productos de la tienda */
   productos = [
     { nombre: 'Caos en Neverwinter', precio: '$59.990', categoria: 'Juegos de Rol', imagen: 'img/caosNeverwinter .webp' },
     { nombre: 'El Señor De Los Anillos', precio: '$59.990', categoria: 'Juegos de Rol', imagen: 'img/señorDeAnillos .webp' },
@@ -30,6 +37,9 @@ export class AdminDashboard implements OnInit {
 
   constructor(private session: SessionService, private router: Router) {}
 
+  /**
+   * inicializar el dashboard
+   */
   ngOnInit() {
     const usuarioActivo = this.session.getUsuarioActivo();
 
@@ -47,6 +57,9 @@ export class AdminDashboard implements OnInit {
 
     this.usuarios = this.session.getUsuarios();
   }
+  /**
+   * Funcion para cerrar al session
+   */
 
   cerrarSesion() {
     this.session.cerrarSesion();
