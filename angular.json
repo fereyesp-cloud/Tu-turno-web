@@ -58,15 +58,18 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
-          "configurations": {
-            "production": {
-              "buildTarget": "tu-turno-web:build:production"
-            },
-            "development": {
-              "buildTarget": "tu-turno-web:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
+          "options": {
+          "proxyConfig": "proxy.conf.json"
+        },
+        "configurations": {
+          "production": {
+          "buildTarget": "tu-turno-web:build:production"
+        },
+          "development": {
+          "buildTarget": "tu-turno-web:build:development"
+        }
+  },
+  "defaultConfiguration": "development"
         },
         "test": {
           "builder": "@angular/build:unit-test"

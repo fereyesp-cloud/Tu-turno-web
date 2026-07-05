@@ -9,7 +9,7 @@
 <main>
   <section class="seccion juegos">
     <div class="contenedor">
-      <h2>Juegos disponibles</h2>
+      <h2>Juegos de Rol</h2>
       <p>Juegos disponibles hasta agotar stock</p>
       <div class="alert alert-success" *ngIf="mensajeCarrito">{{ mensajeCarrito }}</div>
     </div>
@@ -19,16 +19,21 @@
     <div class="contenedor">
       <h2>Todos</h2>
       <p>Todos los juegos de mesa</p>
-      <div class="contenedor-tarjetas">
+
+      <div *ngIf="cargando" class="text-center mt-4">
+        <p>Cargando productos...</p>
+      </div>
+
+      <div class="contenedor-tarjetas" *ngIf="!cargando">
         <article class="tarjeta-lista" *ngFor="let juego of juegos">
           <img [src]="juego.imagen" [alt]="juego.nombre">
           <div class="tarjeta-lista-rol">
-            <span class="categoria-lista">{{ juego.categoria }}</span>
+            <span class="categoria-lista">Juego de Rol</span>
             <h3>{{ juego.nombre }}</h3>
-            <p>{{ juego.descripcion }}</p>
-            <p class="precio-lista">{{ juego.precio }}</p>
+            <p class="precio-lista">${{ juego.precio | number:'1.0-0' }}</p>
             <p class="descuento-lista">{{ juego.descuento }}</p>
-            <button class="btn btn-primary" (click)="agregarAlCarrito(juego.nombre, juego.precioData, juego.imagen)">🛒 Agregar al carrito</button>
+            <p>Stock: <strong>{{ juego.stock }}</strong></p>
+            <button class="btn btn-primary" (click)="agregarAlCarrito(juego.nombre, juego.precio, juego.imagen)">🛒 Agregar al carrito</button>
           </div>
         </article>
       </div>

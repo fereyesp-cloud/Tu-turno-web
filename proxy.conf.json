@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "https://fereyesp-cloud.github.io",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}

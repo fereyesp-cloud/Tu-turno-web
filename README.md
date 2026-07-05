@@ -40,7 +40,7 @@ Tu Turno Web es una PYME ficticia que vende juegos de mesa. La aplicación permi
 Clona el repositorio e instala las dependencias:
 
 ```bash
-npm install
+npm install --legacy-peer-deps
 ```
 
 Levanta el servidor de desarrollo:
@@ -50,6 +50,14 @@ ng serve
 ```
 
 Abre el navegador en `http://localhost:4200/`
+
+## Documentación
+
+Para generar y ver la documentación con Compodoc:
+
+```bash
+npm run compodoc
+```
 
 ## Pruebas unitarias
 

@@ -1,24 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor, NgIf, DecimalPipe  } from '@angular/common';
 import { SessionService } from '../../services/session';
-import { ProductoService, Producto } from '../../services/producto';
+import { ProductoService } from '../../services/producto';
 
 /**
- * Componente para el juegos de fiesta
- * listar y agregar al carro los juegos
+ * Componente para los juegos de fiesta
+ * Lista y agrega al carrito los juegos
  */
 @Component({
   selector: 'app-juegos-fiesta',
-  imports: [RouterLink, NgFor, NgIf],
+  imports: [RouterLink, NgFor, NgIf, DecimalPipe ],
   templateUrl: './juegos-fiesta.html',
   styleUrl: './juegos-fiesta.css'
 })
 export class JuegosFiesta implements OnInit {
-   /** Lista de juegos */
-  juegos: Producto[] = [];
-  /**mensaje de exito al agregar al carrito */
+
+  /** Lista de juegos de fiesta cargados desde la API */
+  juegos: any[] = [];
+
+  /** Mensaje de éxito al agregar al carrito */
   mensajeCarrito: string = '';
+
+  /** Indica si los datos están cargando */
+  cargando: boolean = true;
+
   /** Lista de beneficios mostrados en la sección de beneficios */
   beneficios = [
     { titulo: 'Juegos populares', descripcion: 'Siempre ofrecemos los juegos más jugados del momento' },
@@ -26,20 +32,34 @@ export class JuegosFiesta implements OnInit {
     { titulo: 'Juegos para todos/as', descripcion: 'Tenemos juegos para distintos tipos de personas y gustos' }
   ];
 
-  constructor(public session: SessionService, private productoService: ProductoService) {}
+  constructor(
+    public session: SessionService,
+    private productoService: ProductoService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   /**
-  * Inicialización del juego de fiesta — carga los juegos de fiesta
-  */
+   * Inicialización — carga los juegos de fiesta desde la API
+   */
   ngOnInit() {
-    this.juegos = this.productoService.getJuegosFiesta();
+    this.productoService.getPorCategoria('Juegos de Fiesta').subscribe({
+      next: (data) => {
+        this.juegos = data;
+        this.cargando = false;
+        this.cdr.detectChanges();
+      },
+      error: () => {
+        this.cargando = false;
+        this.cdr.detectChanges();
+      }
+    });
   }
 
   /**
-   * Funciona de agregar productos al carro desde juegos de fiesta
+   * Agrega un producto al carrito desde la página de juegos de fiesta
    * @param nombre Nombre del producto
-   * @param precio precio del producto
-   * @param imagen imegen del producto
+   * @param precio Precio del producto
+   * @param imagen Ruta de la imagen del producto
    */
   agregarAlCarrito(nombre: string, precio: string, imagen: string) {
     this.session.agregarAlCarrito(nombre, precio, imagen);

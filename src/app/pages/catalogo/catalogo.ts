@@ -18,11 +18,13 @@ import { ProductoService, Producto } from '../../services/producto';
 export class Catalogo implements OnInit {
 
   /** Lista de juegos cargados según la categoría activa */
-  juegos: Producto[] = [];
+  juegos: any[] = [];
   /** Categoría activa obtenida desde los parámetros de la ruta */
   categoria: string = '';
-  /** Mensaje temporal que confirma que un producto fue agregado al carrito */
+ /** Mensaje temporal que confirma que un producto fue agregado al carrito */
   mensajeCarrito: string = '';
+  /** Indica si los datos están cargando */
+  cargando: boolean = false;
 
   /**
    * Muestra la seccion de beneficios en las paginas
@@ -59,23 +61,27 @@ export class Catalogo implements OnInit {
   */
 
   cargarJuegos(categoria: string) {
-    switch (categoria) {
-      case 'rol':
-        this.juegos = this.productoService.getJuegosRol();
-        break;
-      case 'familiares':
-        this.juegos = this.productoService.getJuegosFamiliares();
-        break;
-      case 'estrategia':
-        this.juegos = this.productoService.getJuegosEstrategia();
-        break;
-      case 'fiesta':
-        this.juegos = this.productoService.getJuegosFiesta();
-        break;
-      default:
-        this.juegos = [];
+  const categoriasMap: { [key: string]: string } = {
+    'rol': 'Juegos de Rol',
+    'familiares': 'Juegos Familiares',
+    'estrategia': 'Juegos de Estrategia',
+    'fiesta': 'Juegos de Fiesta'
+  };
+
+  const categoriaAPI = categoriasMap[categoria];
+
+  this.productoService.getPorCategoria(categoriaAPI).subscribe({
+    next: (data) => {
+      this.juegos = data;
+      this.cargando = false;
+      this.cdr.detectChanges();
+    },
+    error: () => {
+      this.cargando = false;
+      this.cdr.detectChanges();
     }
-  }
+  });
+}
 
   /**
   * Retorna el título legible según la categoría activa

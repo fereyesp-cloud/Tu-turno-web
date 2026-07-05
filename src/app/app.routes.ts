@@ -7,6 +7,7 @@ import { RecuperarContrasena } from './pages/recuperar-contrasena/recuperar-cont
 import { Carrito } from './pages/carrito/carrito';
 import { Perfil } from './pages/perfil/perfil';
 import { AdminDashboard } from './pages/admin-dashboard/admin-dashboard';
+import { ProductosApi } from './pages/productos-api/productos-api';
 
 /**
  * Definición de rutas de la aplicación Tu Turno Web.
@@ -23,5 +24,6 @@ export const routes: Routes = [
   { path: 'carrito', component: Carrito },
   { path: 'perfil', component: Perfil },
   { path: 'admin', component: AdminDashboard },
+  { path: 'productos-api', component: ProductosApi },
   { path: '**', redirectTo: '' }
 ];

@@ -1,0 +1,49 @@
+<header class="encabezado" id="inicio">
+  <div class="contenedor encabezado-contenido">
+    <h1>Tu turno web</h1>
+  </div>
+</header>
+
+<main>
+  <section class="seccion juegos">
+    <div class="contenedor">
+      <h2>Catálogo de Productos</h2>
+    </div>
+  </section>
+
+  <section class="seccion lista">
+    <div class="contenedor">
+
+      <div *ngIf="cargando" class="text-center mt-4">
+        <p>Cargando productos...</p>
+      </div>
+
+      <div *ngIf="error" class="alert alert-danger mt-4">
+        {{ error }}
+      </div>
+
+      <div *ngIf="!cargando && !error">
+        <div *ngFor="let cat of categorias" class="mb-5">
+          <h3 class="mb-3">{{ cat.categoria }}</h3>
+          <div class="contenedor-tarjetas">
+            <article class="tarjeta-lista" *ngFor="let producto of cat.productos">
+              <img [src]="producto.imagen" [alt]="producto.nombre">
+              <div class="tarjeta-lista-rol">
+                <span class="categoria-lista">{{ cat.categoria }}</span>
+                <h4>{{ producto.nombre }}</h4>
+                <p class="precio-lista">${{ producto.precio | number:'1.0-0' }}</p>
+                <p class="descuento-lista">{{ producto.descuento }}</p>
+                <p>Stock disponible: <strong>{{ producto.stock }}</strong></p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="pie-pagina">
+  <p>© 2026 Tu turno Web — Ejemplo académico DSY2202</p>
+</footer>
