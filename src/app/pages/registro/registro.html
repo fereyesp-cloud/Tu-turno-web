@@ -21,7 +21,10 @@
           <label class="form-label">Nombre de usuario *</label>
           <input type="text" class="form-control" formControlName="nombreUsuario" placeholder="Ingrese nombre de usuario"
             [class.is-invalid]="formularioRegistro.get('nombreUsuario')?.invalid && formularioRegistro.get('nombreUsuario')?.touched">
-          <div class="invalid-feedback">El nombre de usuario es obligatorio</div>
+          <div class="invalid-feedback">
+            <span *ngIf="formularioRegistro.get('nombreUsuario')?.errors?.['required']">El nombre de usuario es obligatorio</span>
+            <span *ngIf="formularioRegistro.get('nombreUsuario')?.errors?.['duplicado']">El nombre de usuario ya está registrado</span>
+          </div>
         </div>
         <div class="mb-3">
           <label class="form-label">Correo *</label>
@@ -30,6 +33,7 @@
           <div class="invalid-feedback">
             <span *ngIf="formularioRegistro.get('correo')?.errors?.['required']">El correo es obligatorio</span>
             <span *ngIf="formularioRegistro.get('correo')?.errors?.['email']">El correo no tiene formato válido</span>
+            <span *ngIf="formularioRegistro.get('correo')?.errors?.['duplicado']">El correo ya está registrado</span>
           </div>
         </div>
         <div class="mb-3">

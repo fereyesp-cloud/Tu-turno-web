@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { NgIf, NgFor, DecimalPipe  } from '@angular/common';
+import { NgIf, NgFor, DecimalPipe } from '@angular/common';
 import { SessionService } from '../../services/session';
 import { Router } from '@angular/router';
 
-
 /**
- * Componente  del carro de tu turno web
- * contine el contenido del carro
- * agregar productos, vaciar producto y finalizar compra
+ * Componente del carro de tu turno web.
+ * Contiene el contenido del carro, agregar productos, vaciar y finalizar compra.
  */
 @Component({
   selector: 'app-carrito',
@@ -17,36 +15,76 @@ import { Router } from '@angular/router';
   styleUrl: './carrito.css'
 })
 export class Carrito implements OnInit {
-  /** Lista de productos en el carrito */
+
+  /** Lista de productos en el carrito con cantidad */
   items: any[] = [];
+
   /** Total calculado de los productos en el carrito */
   total: number = 0;
+
   /** Mensaje de confirmación de compra exitosa */
   mensajeExito: string = '';
+
   /** Mensaje de advertencia cuando el carrito está vacío */
   mensajeVacio: string = '';
 
   constructor(private session: SessionService, private router: Router) {}
 
   /**
-   * inicializacion del carro
+   * Inicialización del carrito
    */
   ngOnInit() {
     this.cargarCarrito();
   }
-  /**
-  * Funcion de carga los productos del carrito desde localStorage y calcula el total
-  */
 
+  /**
+   * Carga los productos del carrito desde localStorage,
+   * agrupa por nombre y calcula el total
+   */
   cargarCarrito() {
-    this.items = this.session.getCarrito();
-    this.total = this.items.reduce((sum, p) => sum + parseInt(p.precio), 0);
+    const raw = this.session.getCarrito();
+    const agrupado: any = {};
+
+    raw.forEach((p: any) => {
+      const precioNumero = typeof p.precio === 'string' 
+        ? parseInt(p.precio.replace(/\D/g, '')) 
+        : parseInt(p.precio);
+      
+      if (agrupado[p.nombre]) {
+        agrupado[p.nombre].cantidad++;
+      } else {
+        agrupado[p.nombre] = { ...p, cantidad: 1, precioNumero };
+      }
+    });
+
+    this.items = Object.values(agrupado);
+    this.calcularTotal();
   }
 
   /**
-   * funcion para vaciar productos del carro
+   * Calcula el total del carrito
    */
+  calcularTotal() {
+    this.total = this.items.reduce((sum, p) => sum + p.precioNumero * p.cantidad, 0);
+  }
 
+  /**
+   * Elimina un producto individual del carrito
+   * @param nombre Nombre del producto a eliminar
+   */
+  eliminarProducto(nombre: string) {
+    const raw = this.session.getCarrito();
+    const index = raw.findIndex((p: any) => p.nombre === nombre);
+    if (index !== -1) {
+      raw.splice(index, 1);
+      localStorage.setItem('carrito', JSON.stringify(raw));
+      this.cargarCarrito();
+    }
+  }
+
+  /**
+   * Elimina todos los productos del carrito
+   */
   vaciarCarrito() {
     this.session.vaciarCarrito();
     this.items = [];
@@ -55,9 +93,8 @@ export class Carrito implements OnInit {
   }
 
   /**
-  *Funcion de elimina todos los productos del carrito
-  */
-
+   * Finaliza la compra y vacía el carrito
+   */
   finalizarCompra() {
     if (this.items.length === 0) {
       this.mensajeVacio = 'No tienes productos en el carrito.';

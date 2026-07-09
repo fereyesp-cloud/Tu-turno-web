@@ -29,12 +29,6 @@ export class Perfil implements OnInit {
   ngOnInit() {
     const usuarioActivo = this.session.getUsuarioActivo();
 
-    // Si no hay sesión redirigir al login
-    if (!usuarioActivo) {
-      this.router.navigate(['/login']);
-      return;
-    }
-
     this.formularioPerfil = this.fb.group({
       nombre: [usuarioActivo.nombre, Validators.required],
       nombreUsuario: [usuarioActivo.nombreUsuario, Validators.required],

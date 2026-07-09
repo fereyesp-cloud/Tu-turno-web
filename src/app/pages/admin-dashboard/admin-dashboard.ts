@@ -41,20 +41,7 @@ export class AdminDashboard implements OnInit {
    * inicializar el dashboard
    */
   ngOnInit() {
-    const usuarioActivo = this.session.getUsuarioActivo();
-
-    // Si no hay sesión redirigir al login
-    if (!usuarioActivo) {
-      this.router.navigate(['/login']);
-      return;
-    }
-
-    // Si no es admin redirigir al home
-    if (usuarioActivo.rol !== 'admin') {
-      this.router.navigate(['/']);
-      return;
-    }
-
+  
     this.usuarios = this.session.getUsuarios();
   }
   /**

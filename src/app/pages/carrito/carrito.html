@@ -21,11 +21,16 @@
             <div class="col-3 col-md-1">
               <img [src]="producto.imagen" class="img-fluid p-2">
             </div>
-            <div class="col-9 col-md-11">
+            <div class="col-7 col-md-9">
               <div class="card-body py-2">
                 <h6 class="mb-1">{{ producto.nombre }}</h6>
-                <p class="precio mb-0">${{ producto.precio | number:'1.0-0' }}</p>
+                <p class="precio mb-0">${{ producto.precioNumero | number:'1.0-0' }}</p>
+                <p class="mb-0">Cantidad: <strong>{{ producto.cantidad }}</strong></p>
+                <p class="mb-0">Subtotal: <strong>${{ producto.precioNumero * producto.cantidad | number:'1.0-0' }}</strong></p>
               </div>
+            </div>
+            <div class="col-2 col-md-2 text-center">
+              <button class="btn btn-danger btn-sm" (click)="eliminarProducto(producto.nombre)">🗑️</button>
             </div>
           </div>
         </div>

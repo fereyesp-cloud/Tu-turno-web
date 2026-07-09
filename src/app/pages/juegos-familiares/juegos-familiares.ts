@@ -61,9 +61,10 @@ export class JuegosFamiliares implements OnInit {
    * @param precio Precio del producto
    * @param imagen Ruta de la imagen del producto
    */
-  agregarAlCarrito(nombre: string, precio: string, imagen: string) {
-    this.session.agregarAlCarrito(nombre, precio, imagen);
-    this.mensajeCarrito = `"${nombre}" agregado al carrito`;
-    setTimeout(() => this.mensajeCarrito = '', 2000);
-  }
+  agregarAlCarrito(nombre: string, precio: any, imagen: string) {
+  console.log('nombre:', nombre, 'precio:', precio, 'imagen:', imagen);
+  this.session.agregarAlCarrito(nombre, precio.toString(), imagen);
+  this.mensajeCarrito = `"${nombre}" agregado al carrito`;
+  setTimeout(() => this.mensajeCarrito = '', 2000);
+}
 }

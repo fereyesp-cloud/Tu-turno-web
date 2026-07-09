@@ -104,6 +104,21 @@ export class Registro implements OnInit {
     };
 
     const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+    // Verificar si el correo o nombre de usuario ya existen
+    const usuarioExistente = usuarios.find((u: any) => 
+      u.nombreUsuario === nombreUsuario || u.correo === correo
+    );
+
+    if (usuarioExistente) {
+      if (usuarioExistente.nombreUsuario === nombreUsuario) {
+          this.formularioRegistro.get('nombreUsuario')?.setErrors({ duplicado: true });
+        }
+      if (usuarioExistente.correo === correo) {
+        this.formularioRegistro.get('correo')?.setErrors({ duplicado: true });
+      }
+      return;
+    }
+
     usuarios.push(nuevoUsuario);
     localStorage.setItem('usuarios', JSON.stringify(usuarios));
 

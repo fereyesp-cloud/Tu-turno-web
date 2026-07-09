@@ -8,13 +8,14 @@ import { Carrito } from './pages/carrito/carrito';
 import { Perfil } from './pages/perfil/perfil';
 import { AdminDashboard } from './pages/admin-dashboard/admin-dashboard';
 import { ProductosApi } from './pages/productos-api/productos-api';
+import { authGuard } from './guards/auth-guard';
+import { adminGuard } from './guards/admin-guard';
 
 /**
  * Definición de rutas de la aplicación Tu Turno Web.
  * Incluye rutas para home, catálogo dinámico por categoría,
  * autenticación, carrito, perfil y panel de administración.
  */
-
 export const routes: Routes = [
   { path: '', component: Home },
   { path: 'juegos/:categoria', component: Catalogo },
@@ -22,8 +23,8 @@ export const routes: Routes = [
   { path: 'registro', component: Registro },
   { path: 'recuperar-contrasena', component: RecuperarContrasena },
   { path: 'carrito', component: Carrito },
-  { path: 'perfil', component: Perfil },
-  { path: 'admin', component: AdminDashboard },
+  { path: 'perfil', component: Perfil, canActivate: [authGuard] },
+  { path: 'admin', component: AdminDashboard, canActivate: [adminGuard] },
   { path: 'productos-api', component: ProductosApi },
   { path: '**', redirectTo: '' }
 ];

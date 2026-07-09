@@ -61,27 +61,28 @@ export class Catalogo implements OnInit {
   */
 
   cargarJuegos(categoria: string) {
-  const categoriasMap: { [key: string]: string } = {
-    'rol': 'Juegos de Rol',
-    'familiares': 'Juegos Familiares',
-    'estrategia': 'Juegos de Estrategia',
-    'fiesta': 'Juegos de Fiesta'
-  };
+    const categoriasMap: { [key: string]: string } = {
+      'rol': 'Juegos de Rol',
+      'familiares': 'Juegos Familiares',
+      'estrategia': 'Juegos de Estrategia',
+      'fiesta': 'Juegos de Fiesta'
+    };
 
-  const categoriaAPI = categoriasMap[categoria];
+    const categoriaAPI = categoriasMap[categoria];
 
-  this.productoService.getPorCategoria(categoriaAPI).subscribe({
-    next: (data) => {
-      this.juegos = data;
-      this.cargando = false;
-      this.cdr.detectChanges();
-    },
-    error: () => {
-      this.cargando = false;
-      this.cdr.detectChanges();
-    }
-  });
-}
+    this.productoService.getPorCategoria(categoriaAPI).subscribe({
+      next: (data) => {
+        console.log('datos recibidos:', data);  // ← aquí
+        this.juegos = data;
+        this.cargando = false;
+        this.cdr.detectChanges();
+      },
+      error: () => {
+        this.cargando = false;
+        this.cdr.detectChanges();
+      }
+    });
+  }
 
   /**
   * Retorna el título legible según la categoría activa
@@ -105,8 +106,8 @@ export class Catalogo implements OnInit {
   * @param imagen Ruta de la imagen del producto
   */
 
-  agregarAlCarrito(nombre: string, precio: string, imagen: string) {
-    this.session.agregarAlCarrito(nombre, precio, imagen);
+  agregarAlCarrito(nombre: string, precio: any, imagen: string) {
+    this.session.agregarAlCarrito(nombre, precio.toString(), imagen);
     this.mensajeCarrito = `"${nombre}" agregado al carrito`;
     setTimeout(() => this.mensajeCarrito = '', 2000);
   }
