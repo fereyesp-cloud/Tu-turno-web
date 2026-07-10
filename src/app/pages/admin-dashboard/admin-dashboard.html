@@ -9,6 +9,7 @@
   <section class="Resumen-admin" id="general">
     <div class="contenedor">
       <p>Total usuarios: {{ usuarios.length }}</p>
+      <p>Total productos activos: {{ productos.length }}</p>
     </div>
   </section>
 
@@ -39,6 +40,44 @@
   <section class="productos-admin" id="gestionProductos">
     <div class="contenedor">
       <h2>Gestión de productos</h2>
+      <button class="btn btn-success mb-3" (click)="nuevoProducto()">➕ Nuevo producto</button>
+
+      <!-- Formulario crear/editar -->
+      <div class="card p-3 mb-4" *ngIf="mostrarFormulario">
+        <h4>{{ productoEditando ? 'Editar producto' : 'Nuevo producto' }}</h4>
+        <div class="mb-2">
+          <label class="form-label">Nombre</label>
+          <input type="text" class="form-control" [(ngModel)]="formulario.nombre">
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Categoría</label>
+          <select class="form-select" [(ngModel)]="formulario.categoria">
+            <option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</option>
+          </select>
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Precio</label>
+          <input type="number" class="form-control" [(ngModel)]="formulario.precio" min="1" step="1">
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Descuento</label>
+          <input type="text" class="form-control" [(ngModel)]="formulario.descuento">
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Stock</label>
+          <input type="number" class="form-control" [(ngModel)]="formulario.stock" min="0" step="1">
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Imagen</label>
+          <input type="text" class="form-control" [(ngModel)]="formulario.imagen">
+        </div>
+        <div class="d-flex gap-2 mt-2">
+          <button class="btn btn-primary" (click)="guardarProducto()">💾 Guardar</button>
+          <button class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+        </div>
+      </div>
+
+      <!-- Tabla de productos -->
       <table class="table table-striped table-hover">
         <thead>
           <tr>
@@ -46,18 +85,20 @@
             <th>Nombre</th>
             <th>Precio</th>
             <th>Categoría</th>
+            <th>Stock</th>
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let producto of productos">
-            <td><img [src]="producto.imagen" height="80" width="80" style="object-fit:contain;"></td>
+            <td><img [src]="producto.imagen" height="60" width="60" style="object-fit:contain;"></td>
             <td>{{ producto.nombre }}</td>
-            <td>{{ producto.precio }}</td>
+            <td>${{ producto.precio }}</td>
             <td>{{ producto.categoria }}</td>
+            <td>{{ producto.stock }}</td>
             <td>
-              <button class="btn btn-sm btn-warning me-1">✏️ Editar</button>
-              <button class="btn btn-sm btn-danger">🗑️ Eliminar</button>
+              <button class="btn btn-sm btn-warning me-1" (click)="editarProducto(producto)">✏️ Editar</button>
+              <button class="btn btn-sm btn-danger" (click)="confirmarEliminar(producto)">🗑️ Eliminar</button>
             </td>
           </tr>
         </tbody>
@@ -65,6 +106,17 @@
     </div>
   </section>
 </main>
+
+<!-- Modal confirmación eliminar -->
+<div class="modal-confirmacion" *ngIf="mostrarConfirmacion">
+  <div class="card p-4 text-center" style="max-width: 400px; margin: auto;">
+    <h5>{{ mensajeConfirmacion }}</h5>
+    <div class="d-flex gap-2 justify-content-center mt-3">
+      <button class="btn btn-danger" (click)="eliminarProducto()">Sí, eliminar</button>
+      <button class="btn btn-secondary" (click)="cancelarEliminar()">Cancelar</button>
+    </div>
+  </div>
+</div>
 
 <footer class="pie-pagina">
   <p>© 2026 Tu turno Web — Ejemplo académico DSY2202</p>

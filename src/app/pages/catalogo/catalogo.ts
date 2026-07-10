@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor, NgIf, DecimalPipe  } from '@angular/common';
 import { SessionService } from '../../services/session';
 import { ProductoService, Producto } from '../../services/producto';
 
@@ -11,7 +11,7 @@ import { ProductoService, Producto } from '../../services/producto';
  */
 @Component({
   selector: 'app-catalogo',
-  imports: [RouterLink, NgFor, NgIf],
+  imports: [RouterLink, NgFor, NgIf, DecimalPipe],
   templateUrl: './catalogo.html',
   styleUrl: './catalogo.css'
 })

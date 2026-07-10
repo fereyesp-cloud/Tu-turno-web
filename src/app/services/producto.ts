@@ -6,23 +6,16 @@ import { Observable, map } from 'rxjs';
  * Interfaz que define la estructura de un producto
  */
 export interface Producto {
-  /**Nombre del producto */
-  nombre: string;
-  /**Categoria del producto */
-  categoria: string;
-  /**Descripcion del producto */
-  descripcion?: string;
-  /**Precio del producto */
-  precio: string;
-  precioData: string;
-  /**Descuento del producto */
-  descuento: string;
-  /**Imagen del producto */
-  imagen: string;
-  /**ID del producto */
   id?: number;
-  /**Stock del producto */
+  nombre: string;
+  categoria: string;
+  descripcion?: string;
+  precio: number;
+  precioData?: string;
+  descuento: string;
+  imagen: string;
   stock?: number;
+  activo?: boolean;
 }
 
 /**
@@ -33,31 +26,44 @@ export interface Producto {
 })
 export class ProductoService {
 
-  /** URL del JSON publicado en GitHub Pages */
-  private url = 'https://fereyesp-cloud.github.io/api-productos/productos.json';
+  /** URL base de json-server */
+  private url = '/api/productos';
 
   constructor(private http: HttpClient) {}
 
   /**
-   * Obtiene todos los productos desde GitHub Pages
-   * @returns Observable con el JSON completo
+   * Obtiene todos los productos activos
+   * @returns Observable con todos los productos
    */
   getProductos(): Observable<any> {
-    return this.http.get<any>(this.url);
+    return this.http.get<any[]>(this.url).pipe(
+      map((productos: any[]) => ({
+        categorias: this.agruparPorCategoria(productos.filter(p => p.activo !== false))
+      }))
+    );
+  }
+
+  /**
+   * Agrupa los productos por categoría
+   * @param productos Lista de productos
+   * @returns Array de categorías con sus productos
+   */
+  private agruparPorCategoria(productos: any[]): any[] {
+    const mapa: { [key: string]: any[] } = {};
+    productos.forEach(p => {
+      if (!mapa[p.categoria]) mapa[p.categoria] = [];
+      mapa[p.categoria].push(p);
+    });
+    return Object.keys(mapa).map(cat => ({ categoria: cat, productos: mapa[cat] }));
   }
 
   /**
    * Obtiene los juegos de una categoría específica
-   * @param categoria Nombre de la categoría a filtrar
+   * @param categoria Nombre de la categoría
    * @returns Observable con los productos de esa categoría
    */
   getPorCategoria(categoria: string): Observable<any[]> {
-    return this.getProductos().pipe(
-      map((data: any) => {
-        const cat = data.categorias.find((c: any) => c.categoria === categoria);
-        return cat ? cat.productos : [];
-      })
-    );
+    return this.http.get<any[]>(`${this.url}?categoria=${categoria}&activo=true`);
   }
 
   /**

@@ -1,53 +1,198 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { SessionService } from '../../services/session';
-
+import { CrudProductosService } from '../../services/crud-productos';
 
 /**
- * Componente de la vista admin
- * contiene los productos de la tienda y cerrar la session
+ * Componente de la vista admin.
+ * Gestiona usuarios y productos con operaciones CRUD.
  */
 @Component({
   selector: 'app-admin-dashboard',
-  imports: [NgFor],
+  imports: [NgFor, NgIf, FormsModule],
   templateUrl: './admin-dashboard.html',
   styleUrl: './admin-dashboard.css'
 })
 export class AdminDashboard implements OnInit {
 
-  /**Lista de usuarios */
+  /** Lista de usuarios registrados */
   usuarios: any[] = [];
 
-  /**Listar los productos de la tienda */
-  productos = [
-    { nombre: 'Caos en Neverwinter', precio: '$59.990', categoria: 'Juegos de Rol', imagen: 'img/caosNeverwinter .webp' },
-    { nombre: 'El Señor De Los Anillos', precio: '$59.990', categoria: 'Juegos de Rol', imagen: 'img/señorDeAnillos .webp' },
-    { nombre: 'Dungeons And Dragons', precio: '$69.990', categoria: 'Juegos de Rol', imagen: 'img/dungeons .webp' },
-    { nombre: 'Basta', precio: '$9.990', categoria: 'Juegos Familiares', imagen: 'img/juegoBasta .webp' },
-    { nombre: 'EXIT: El laberinto maldito', precio: '$39.990', categoria: 'Juegos de estrategia', imagen: 'img/ExitLaberintoMaldito .webp' },
-    { nombre: 'CATAN', precio: '$29.990', categoria: 'Juegos de estrategia', imagen: 'img/catan .webp' },
-    { nombre: 'La Tripulación: Misión Mar Profundo', precio: '$17.990', categoria: 'Juegos de estrategia', imagen: 'img/tripulacion .webp' },
-    { nombre: 'Improvisado', precio: '$17.990', categoria: 'Juegos familiares', imagen: 'img/improvisado .webp' },
-    { nombre: 'Party & Co Family', precio: '$17.990', categoria: 'Juegos familiares', imagen: 'img/partyFamily .webp' },
-    { nombre: 'Si te ríes, tomas', precio: '$14.990', categoria: 'Juegos de fiesta', imagen: 'img/SiteReisPierdes .webp' },
-    { nombre: 'Curao Volao o Weón de Cojones para Adultos', precio: '$15.990', categoria: 'Juegos de fiesta', imagen: 'img/curaoVolao .webp' },
-    { nombre: 'Mójate el potito', precio: '$12.990', categoria: 'Juegos de fiesta', imagen: 'img/Mojate .webp' }
-  ];
+  /** Lista de productos activos desde json-server */
+  productos: any[] = [];
 
-  constructor(private session: SessionService, private router: Router) {}
+  /** Controla si se muestra el formulario */
+  mostrarFormulario: boolean = false;
+
+  /** Producto seleccionado para editar */
+  productoEditando: any = null;
+
+  /** Mensaje de confirmación a mostrar */
+  mensajeConfirmacion: string = '';
+
+  /** Producto pendiente de eliminar */
+  productoPendienteEliminar: any = null;
+
+  /** Controla si se muestra el modal de confirmación */
+  mostrarConfirmacion: boolean = false;
+
+  /** Modelo del formulario */
+  formulario = {
+    nombre: '',
+    categoria: '',
+    precio: 0,
+    descuento: '',
+    stock: 0,
+    imagen: ''
+  };
+
+  /** Lista de categorías disponibles */
+  categorias = ['Juegos de Rol', 'Juegos Familiares', 'Juegos de Estrategia', 'Juegos de Fiesta'];
+
+  constructor(
+    private session: SessionService,
+    private router: Router,
+    private crudService: CrudProductosService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   /**
-   * inicializar el dashboard
+   * Inicializa el dashboard cargando usuarios y productos
    */
   ngOnInit() {
-  
     this.usuarios = this.session.getUsuarios();
+    this.cargarProductos();
   }
-  /**
-   * Funcion para cerrar al session
-   */
 
+  /**
+   * Carga los productos activos desde json-server
+   */
+  cargarProductos() {
+    this.crudService.getProductos().subscribe({
+      next: (data) => {
+        this.productos = data.filter((p: any) => p.activo !== false);
+        this.cdr.detectChanges();
+      }
+    });
+  }
+
+  /**
+   * Abre el formulario para crear un nuevo producto
+   */
+  nuevoProducto() {
+    this.productoEditando = null;
+    this.formulario = { nombre: '', categoria: '', precio: 0, descuento: '', stock: 0, imagen: '' };
+    this.mostrarFormulario = true;
+  }
+
+  /**
+   * Abre el formulario para editar un producto existente
+   * @param producto Producto a editar
+   */
+  editarProducto(producto: any) {
+    this.productoEditando = producto;
+    this.formulario = { ...producto };
+    this.mostrarFormulario = true;
+  }
+
+  /**
+   * Guarda el producto — crea o actualiza según corresponda
+   */
+  guardarProducto() {
+    /**
+     * Se valida que se rellen todos los campos
+     */
+    if (!this.formulario.nombre || !this.formulario.categoria || 
+        !this.formulario.descuento || !this.formulario.imagen) {
+      alert('Por favor completa todos los campos');
+      return;
+    }
+
+    /**
+     * Se valida que el precio sea mayor a 0
+     */
+    if (this.formulario.precio <= 0) {
+      alert('El precio debe ser mayor a 0');
+      return;
+    }
+    /**
+     * Se valida que el stock no sea negativo
+     */
+    if (this.formulario.stock < 0) {
+      alert('El stock no puede ser negativo');
+      return;
+    }
+    /**
+     * Se valida que el precio y el stock sean numero enteros
+     */
+
+    if (!Number.isInteger(this.formulario.precio) || !Number.isInteger(this.formulario.stock)) {
+      alert('El precio y el stock deben ser números enteros');
+      return;
+    }
+
+    if (this.productoEditando) {
+      this.crudService.actualizarProducto(this.productoEditando.id, { ...this.formulario, activo: true }).subscribe({
+        next: () => {
+          this.mostrarFormulario = false;
+          this.cargarProductos();
+        }
+      });
+    } else {
+      this.crudService.crearProducto({ ...this.formulario, activo: true }).subscribe({
+        next: () => {
+          this.mostrarFormulario = false;
+          this.cargarProductos();
+        }
+      });
+    }
+  }
+
+  /**
+  * Muestra confirmación antes de eliminar
+  */
+  confirmarEliminar(producto: any) {
+    this.productoPendienteEliminar = producto;
+    this.mensajeConfirmacion = `¿Estás seguro de eliminar "${producto.nombre}"?`;
+    this.mostrarConfirmacion = true;
+  }
+
+  /**
+  * Ejecuta la eliminación lógica confirmada
+  */
+  eliminarProducto() {
+    if (this.productoPendienteEliminar) {
+      this.crudService.eliminarProducto(this.productoPendienteEliminar.id, this.productoPendienteEliminar).subscribe({
+        next: () => {
+          this.mostrarConfirmacion = false;
+          this.productoPendienteEliminar = null;
+          this.cargarProductos();
+        }
+      });
+    } 
+  }
+
+  /**
+  * Cancela la eliminación
+  */
+  cancelarEliminar() {
+    this.mostrarConfirmacion = false;
+    this.productoPendienteEliminar = null;
+  }
+
+  /**
+   * Cancela el formulario de crear/editar
+  */
+  cancelar() {
+    this.mostrarFormulario = false;
+    this.productoEditando = null;
+  }
+  
+  /**
+   * Cierra la sesión del administrador
+   */
   cerrarSesion() {
     this.session.cerrarSesion();
     this.router.navigate(['/']);

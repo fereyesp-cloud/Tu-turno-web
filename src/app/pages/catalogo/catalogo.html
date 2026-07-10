@@ -26,7 +26,7 @@
             <span class="categoria-lista">{{ juego.categoria }}</span>
             <h3>{{ juego.nombre }}</h3>
             <p>{{ juego.descripcion }}</p>
-            <p class="precio-lista">{{ juego.precio }}</p>
+            <p class="precio-lista">${{ juego.precio | number:'1.0-0' }}</p>
             <p class="descuento-lista">{{ juego.descuento }}</p>
             <button class="btn btn-primary" (click)="agregarAlCarrito(juego.nombre, juego.precio, juego.imagen)">🛒 Agregar al carrito</button>
           </div>

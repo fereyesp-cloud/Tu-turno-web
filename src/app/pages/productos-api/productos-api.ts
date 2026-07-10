@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { NgFor, NgIf, DecimalPipe } from '@angular/common';
-import { ProductosApiService } from '../../services/productos-api';
+import { ProductoService } from '../../services/producto';
 
 /**
  * Componente que muestra los productos consumidos desde GitHub Pages
@@ -23,7 +23,7 @@ export class ProductosApi implements OnInit {
   error: string = '';
 
   constructor(
-    private productosApiService: ProductosApiService,
+    private productoService: ProductoService,
     private cdr: ChangeDetectorRef
   ) {}
 
@@ -31,13 +31,13 @@ export class ProductosApi implements OnInit {
    * Inicialización del componente — consume el JSON desde GitHub Pages
    */
   ngOnInit() {
-    this.productosApiService.getProductos().subscribe({
+    this.productoService.getProductos().subscribe({
       next: (data) => {
         this.categorias = data.categorias;
         this.cargando = false;
         this.cdr.detectChanges();
       },
-      error: (err) => {
+      error: () => {
         this.error = 'Error al cargar los productos';
         this.cargando = false;
         this.cdr.detectChanges();
