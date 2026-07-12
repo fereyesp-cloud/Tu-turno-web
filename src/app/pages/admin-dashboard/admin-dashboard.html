@@ -43,7 +43,7 @@
       <button class="btn btn-success mb-3" (click)="nuevoProducto()">➕ Nuevo producto</button>
 
       <!-- Formulario crear/editar -->
-      <div class="card p-3 mb-4" *ngIf="mostrarFormulario">
+      <div class="card p-3 mb-4" *ngIf="mostrarFormulario" #formularioRef>
         <h4>{{ productoEditando ? 'Editar producto' : 'Nuevo producto' }}</h4>
         <div class="mb-2">
           <label class="form-label">Nombre</label>

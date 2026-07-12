@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +16,8 @@ import { CrudProductosService } from '../../services/crud-productos';
   styleUrl: './admin-dashboard.css'
 })
 export class AdminDashboard implements OnInit {
+
+  @ViewChild('formularioRef') formularioRef!: ElementRef;
 
   /** Lista de usuarios registrados */
   usuarios: any[] = [];
@@ -85,6 +87,10 @@ export class AdminDashboard implements OnInit {
     this.productoEditando = null;
     this.formulario = { nombre: '', categoria: '', precio: 0, descuento: '', stock: 0, imagen: '' };
     this.mostrarFormulario = true;
+    setTimeout(() => {
+    this.formularioRef?.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.scrollBy(0, -100);
+    }, 100);
   }
 
   /**
@@ -95,6 +101,9 @@ export class AdminDashboard implements OnInit {
     this.productoEditando = producto;
     this.formulario = { ...producto };
     this.mostrarFormulario = true;
+    setTimeout(() => {
+      this.formularioRef?.nativeElement.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
   }
 
   /**
