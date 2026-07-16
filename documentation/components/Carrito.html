@@ -142,9 +142,8 @@
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>Componente  del carro de tu turno web
-contine el contenido del carro
-agregar productos, vaciar producto y finalizar compra</p>
+        <p>Componente del carro de tu turno web.
+Contiene el contenido del carro, agregar productos, vaciar y finalizar compra.</p>
 
     </p>
 
@@ -249,7 +248,13 @@ agregar productos, vaciar producto y finalizar compra</p>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#calcularTotal" >calcularTotal</a>
+                            </li>
+                            <li>
                                 <a href="#cargarCarrito" >cargarCarrito</a>
+                            </li>
+                            <li>
+                                <a href="#eliminarProducto" >eliminarProducto</a>
                             </li>
                             <li>
                                 <a href="#finalizarCompra" >finalizarCompra</a>
@@ -283,7 +288,7 @@ agregar productos, vaciar producto y finalizar compra</p>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/pages/carrito/carrito.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/pages/carrito/carrito.ts:29</a></div>
                             </td>
                         </tr>
 
@@ -346,6 +351,45 @@ agregar productos, vaciar producto y finalizar compra</p>
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="calcularTotal"></a>
+                    <span class="name">
+                        <span ><b>calcularTotal</b></span>
+                        <a href="#calcularTotal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>calcularTotal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Calcula el total del carrito</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="cargarCarrito"></a>
                     <span class="name">
                         <span ><b>cargarCarrito</b></span>
@@ -362,21 +406,96 @@ agregar productos, vaciar producto y finalizar compra</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="41"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:41</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="44"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:44</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Funcion de carga los productos del carrito desde localStorage y calcula el total</p>
+                        <div class="io-description"><p>Carga los productos del carrito desde localStorage,
+agrupa por nombre y calcula el total</p>
 </div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="eliminarProducto"></a>
+                    <span class="name">
+                        <span ><b>eliminarProducto</b></span>
+                        <a href="#eliminarProducto"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>eliminarProducto(nombre: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="75"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:75</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Elimina un producto individual del carrito</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>nombre</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Nombre del producto a eliminar</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -401,15 +520,15 @@ agregar productos, vaciar producto y finalizar compra</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="61"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:61</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="98"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:98</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Funcion de elimina todos los productos del carrito</p>
+                        <div class="io-description"><p>Finaliza la compra y vacía el carrito</p>
 </div>
 
                         <div class="io-description">
@@ -440,15 +559,15 @@ agregar productos, vaciar producto y finalizar compra</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="34"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:34</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="36"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:36</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>inicializacion del carro</p>
+                        <div class="io-description"><p>Inicialización del carrito</p>
 </div>
 
                         <div class="io-description">
@@ -479,15 +598,15 @@ agregar productos, vaciar producto y finalizar compra</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="50"
-                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:50</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="88"
+                                    class="link-to-prism">src/app/pages/carrito/carrito.ts:88</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>funcion para vaciar productos del carro</p>
+                        <div class="io-description"><p>Elimina todos los productos del carrito</p>
 </div>
 
                         <div class="io-description">
@@ -528,13 +647,13 @@ agregar productos, vaciar producto y finalizar compra</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/pages/carrito/carrito.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/pages/carrito/carrito.ts:20</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Lista de productos en el carrito</p>
+                    <div class="io-description"><p>Lista de productos en el carrito con cantidad</p>
 </div>
                 </td>
             </tr>
@@ -565,7 +684,7 @@ agregar productos, vaciar producto y finalizar compra</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/carrito/carrito.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/carrito/carrito.ts:26</a></div>
                         </td>
                     </tr>
 
@@ -602,7 +721,7 @@ agregar productos, vaciar producto y finalizar compra</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/pages/carrito/carrito.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/pages/carrito/carrito.ts:29</a></div>
                         </td>
                     </tr>
 
@@ -660,15 +779,13 @@ agregar productos, vaciar producto y finalizar compra</p>
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 import { RouterLink } from &#x27;@angular/router&#x27;;
-import { NgIf, NgFor, DecimalPipe  } from &#x27;@angular/common&#x27;;
+import { NgIf, NgFor, DecimalPipe } from &#x27;@angular/common&#x27;;
 import { SessionService } from &#x27;../../services/session&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
 
-
 /**
- * Componente  del carro de tu turno web
- * contine el contenido del carro
- * agregar productos, vaciar producto y finalizar compra
+ * Componente del carro de tu turno web.
+ * Contiene el contenido del carro, agregar productos, vaciar y finalizar compra.
  */
 @Component({
   selector: &#x27;app-carrito&#x27;,
@@ -677,36 +794,76 @@ import { Router } from &#x27;@angular/router&#x27;;
   styleUrl: &#x27;./carrito.css&#x27;
 })
 export class Carrito implements OnInit {
-  /** Lista de productos en el carrito */
+
+  /** Lista de productos en el carrito con cantidad */
   items: any[] &#x3D; [];
+
   /** Total calculado de los productos en el carrito */
   total: number &#x3D; 0;
+
   /** Mensaje de confirmación de compra exitosa */
   mensajeExito: string &#x3D; &#x27;&#x27;;
+
   /** Mensaje de advertencia cuando el carrito está vacío */
   mensajeVacio: string &#x3D; &#x27;&#x27;;
 
   constructor(private session: SessionService, private router: Router) {}
 
   /**
-   * inicializacion del carro
+   * Inicialización del carrito
    */
   ngOnInit() {
     this.cargarCarrito();
   }
-  /**
-  * Funcion de carga los productos del carrito desde localStorage y calcula el total
-  */
 
+  /**
+   * Carga los productos del carrito desde localStorage,
+   * agrupa por nombre y calcula el total
+   */
   cargarCarrito() {
-    this.items &#x3D; this.session.getCarrito();
-    this.total &#x3D; this.items.reduce((sum, p) &#x3D;&gt; sum + parseInt(p.precio), 0);
+    const raw &#x3D; this.session.getCarrito();
+    const agrupado: any &#x3D; {};
+
+    raw.forEach((p: any) &#x3D;&gt; {
+      const precioNumero &#x3D; typeof p.precio &#x3D;&#x3D;&#x3D; &#x27;string&#x27; 
+        ? parseInt(p.precio.replace(/\D/g, &#x27;&#x27;)) 
+        : parseInt(p.precio);
+      
+      if (agrupado[p.nombre]) {
+        agrupado[p.nombre].cantidad++;
+      } else {
+        agrupado[p.nombre] &#x3D; { ...p, cantidad: 1, precioNumero };
+      }
+    });
+
+    this.items &#x3D; Object.values(agrupado);
+    this.calcularTotal();
   }
 
   /**
-   * funcion para vaciar productos del carro
+   * Calcula el total del carrito
    */
+  calcularTotal() {
+    this.total &#x3D; this.items.reduce((sum, p) &#x3D;&gt; sum + p.precioNumero * p.cantidad, 0);
+  }
 
+  /**
+   * Elimina un producto individual del carrito
+   * @param nombre Nombre del producto a eliminar
+   */
+  eliminarProducto(nombre: string) {
+    const raw &#x3D; this.session.getCarrito();
+    const index &#x3D; raw.findIndex((p: any) &#x3D;&gt; p.nombre &#x3D;&#x3D;&#x3D; nombre);
+    if (index !&#x3D;&#x3D; -1) {
+      raw.splice(index, 1);
+      localStorage.setItem(&#x27;carrito&#x27;, JSON.stringify(raw));
+      this.cargarCarrito();
+    }
+  }
+
+  /**
+   * Elimina todos los productos del carrito
+   */
   vaciarCarrito() {
     this.session.vaciarCarrito();
     this.items &#x3D; [];
@@ -715,9 +872,8 @@ export class Carrito implements OnInit {
   }
 
   /**
-  *Funcion de elimina todos los productos del carrito
-  */
-
+   * Finaliza la compra y vacía el carrito
+   */
   finalizarCompra() {
     if (this.items.length &#x3D;&#x3D;&#x3D; 0) {
       this.mensajeVacio &#x3D; &#x27;No tienes productos en el carrito.&#x27;;
@@ -758,11 +914,16 @@ export class Carrito implements OnInit {
             &lt;div class&#x3D;&quot;col-3 col-md-1&quot;&gt;
               &lt;img [src]&#x3D;&quot;producto.imagen&quot; class&#x3D;&quot;img-fluid p-2&quot;&gt;
             &lt;/div&gt;
-            &lt;div class&#x3D;&quot;col-9 col-md-11&quot;&gt;
+            &lt;div class&#x3D;&quot;col-7 col-md-9&quot;&gt;
               &lt;div class&#x3D;&quot;card-body py-2&quot;&gt;
                 &lt;h6 class&#x3D;&quot;mb-1&quot;&gt;{{ producto.nombre }}&lt;/h6&gt;
-                &lt;p class&#x3D;&quot;precio mb-0&quot;&gt;${{ producto.precio | number:&#x27;1.0-0&#x27; }}&lt;/p&gt;
+                &lt;p class&#x3D;&quot;precio mb-0&quot;&gt;${{ producto.precioNumero | number:&#x27;1.0-0&#x27; }}&lt;/p&gt;
+                &lt;p class&#x3D;&quot;mb-0&quot;&gt;Cantidad: &lt;strong&gt;{{ producto.cantidad }}&lt;/strong&gt;&lt;/p&gt;
+                &lt;p class&#x3D;&quot;mb-0&quot;&gt;Subtotal: &lt;strong&gt;${{ producto.precioNumero * producto.cantidad | number:&#x27;1.0-0&#x27; }}&lt;/strong&gt;&lt;/p&gt;
               &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-2 col-md-2 text-center&quot;&gt;
+              &lt;button class&#x3D;&quot;btn btn-danger btn-sm&quot; (click)&#x3D;&quot;eliminarProducto(producto.nombre)&quot;&gt;🗑️&lt;/button&gt;
             &lt;/div&gt;
           &lt;/div&gt;
         &lt;/div&gt;
@@ -813,8 +974,8 @@ export class Carrito implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><header class="encabezado" id="inicio">  <div class="contenedor encabezado-contenido">    <h1>Carro de compra - Tu turno web</h1>    <p>Bienvenido a Tu Turno Web</p>    <a routerLink="/registro" class="boton-principal">Registrarse</a>  </div></header><main>  <section class="seccion carro">    <div class="contenedor">      <h2>Carro de compras</h2>      <div *ngIf="items.length === 0 && !mensajeExito">        <p>No hay productos en el carrito.</p>      </div>      <div *ngIf="items.length > 0">        <div *ngFor="let producto of items" class="card mb-2">          <div class="row g-0 align-items-center">            <div class="col-3 col-md-1">              <img [src]="producto.imagen" class="img-fluid p-2">            </div>            <div class="col-9 col-md-11">              <div class="card-body py-2">                <h6 class="mb-1">{{ producto.nombre }}</h6>                <p class="precio mb-0">${{ producto.precio | number:\'1.0-0\' }}</p>              </div>            </div>          </div>        </div>        <div class="total-carro mt-3">          <h4>Total: ${{ total | number:\'1.0-0\' }}</h4>        </div>        <div class="alert alert-danger mt-3" *ngIf="mensajeVacio">{{ mensajeVacio }}</div>        <button class="btn btn-danger me-2 mt-3" (click)="vaciarCarrito()">Vaciar carrito</button>        <button class="btn btn-success mt-3" (click)="finalizarCompra()">Finalizar compra</button>      </div>      <div class="alert alert-success mt-3" *ngIf="mensajeExito">{{ mensajeExito }}</div>    </div>  </section></main><footer class="pie-pagina">  <p>© 2026 Tu turno Web — Ejemplo académico DSY2202</p></footer></div>'
-    var COMPONENTS = [{'name': 'AdminDashboard', 'selector': 'app-admin-dashboard'},{'name': 'App', 'selector': 'app-root'},{'name': 'Carrito', 'selector': 'app-carrito'},{'name': 'Catalogo', 'selector': 'app-catalogo'},{'name': 'Home', 'selector': 'app-home'},{'name': 'JuegosEstrategia', 'selector': 'app-juegos-estrategia'},{'name': 'JuegosFamiliares', 'selector': 'app-juegos-familiares'},{'name': 'JuegosFiesta', 'selector': 'app-juegos-fiesta'},{'name': 'JuegosRol', 'selector': 'app-juegos-rol'},{'name': 'Login', 'selector': 'app-login'},{'name': 'Navbar', 'selector': 'app-navbar'},{'name': 'Perfil', 'selector': 'app-perfil'},{'name': 'RecuperarContrasena', 'selector': 'app-recuperar-contrasena'},{'name': 'Registro', 'selector': 'app-registro'},{'name': 'TemplatePlaygroundComponent', 'selector': 'template-playground-root'}];
+        var COMPONENT_TEMPLATE = '<div><header class="encabezado" id="inicio">  <div class="contenedor encabezado-contenido">    <h1>Carro de compra - Tu turno web</h1>    <p>Bienvenido a Tu Turno Web</p>    <a routerLink="/registro" class="boton-principal">Registrarse</a>  </div></header><main>  <section class="seccion carro">    <div class="contenedor">      <h2>Carro de compras</h2>      <div *ngIf="items.length === 0 && !mensajeExito">        <p>No hay productos en el carrito.</p>      </div>      <div *ngIf="items.length > 0">        <div *ngFor="let producto of items" class="card mb-2">          <div class="row g-0 align-items-center">            <div class="col-3 col-md-1">              <img [src]="producto.imagen" class="img-fluid p-2">            </div>            <div class="col-7 col-md-9">              <div class="card-body py-2">                <h6 class="mb-1">{{ producto.nombre }}</h6>                <p class="precio mb-0">${{ producto.precioNumero | number:\'1.0-0\' }}</p>                <p class="mb-0">Cantidad: <strong>{{ producto.cantidad }}</strong></p>                <p class="mb-0">Subtotal: <strong>${{ producto.precioNumero * producto.cantidad | number:\'1.0-0\' }}</strong></p>              </div>            </div>            <div class="col-2 col-md-2 text-center">              <button class="btn btn-danger btn-sm" (click)="eliminarProducto(producto.nombre)">🗑️</button>            </div>          </div>        </div>        <div class="total-carro mt-3">          <h4>Total: ${{ total | number:\'1.0-0\' }}</h4>        </div>        <div class="alert alert-danger mt-3" *ngIf="mensajeVacio">{{ mensajeVacio }}</div>        <button class="btn btn-danger me-2 mt-3" (click)="vaciarCarrito()">Vaciar carrito</button>        <button class="btn btn-success mt-3" (click)="finalizarCompra()">Finalizar compra</button>      </div>      <div class="alert alert-success mt-3" *ngIf="mensajeExito">{{ mensajeExito }}</div>    </div>  </section></main><footer class="pie-pagina">  <p>© 2026 Tu turno Web — Ejemplo académico DSY2202</p></footer></div>'
+    var COMPONENTS = [{'name': 'AdminDashboard', 'selector': 'app-admin-dashboard'},{'name': 'App', 'selector': 'app-root'},{'name': 'Carrito', 'selector': 'app-carrito'},{'name': 'Catalogo', 'selector': 'app-catalogo'},{'name': 'Home', 'selector': 'app-home'},{'name': 'JuegosEstrategia', 'selector': 'app-juegos-estrategia'},{'name': 'JuegosFamiliares', 'selector': 'app-juegos-familiares'},{'name': 'JuegosFiesta', 'selector': 'app-juegos-fiesta'},{'name': 'JuegosRol', 'selector': 'app-juegos-rol'},{'name': 'Login', 'selector': 'app-login'},{'name': 'Navbar', 'selector': 'app-navbar'},{'name': 'Perfil', 'selector': 'app-perfil'},{'name': 'ProductosApi', 'selector': 'app-productos-api'},{'name': 'RecuperarContrasena', 'selector': 'app-recuperar-contrasena'},{'name': 'Registro', 'selector': 'app-registro'},{'name': 'TemplatePlaygroundComponent', 'selector': 'template-playground-root'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'Carrito'};
 </script>

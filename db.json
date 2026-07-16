@@ -1,7 +1,7 @@
 {
   "productos": [
     {
-      "id": 1,
+      "id": "1",
       "nombre": "Caos en Neverwinter",
       "categoria": "Juegos de Rol",
       "precio": 59990,
@@ -11,7 +11,7 @@
       "activo": true
     },
     {
-      "id": 2,
+      "id": "2",
       "nombre": "El Señor De Los Anillos Lcg Caja Básica",
       "categoria": "Juegos de Rol",
       "precio": 59990,
@@ -21,7 +21,7 @@
       "activo": true
     },
     {
-      "id": 3,
+      "id": "3",
       "nombre": "Dungeons And Dragons - Héroes De Tierras Fronterizas",
       "categoria": "Juegos de Rol",
       "precio": 69990,
@@ -31,7 +31,7 @@
       "activo": true
     },
     {
-      "id": 4,
+      "id": "4",
       "nombre": "Basta",
       "categoria": "Juegos Familiares",
       "precio": 9990,
@@ -41,7 +41,7 @@
       "activo": true
     },
     {
-      "id": 5,
+      "id": "5",
       "nombre": "Improvisado",
       "categoria": "Juegos Familiares",
       "precio": 17990,
@@ -51,7 +51,7 @@
       "activo": true
     },
     {
-      "id": 6,
+      "id": "6",
       "nombre": "Party & Co Family",
       "categoria": "Juegos Familiares",
       "precio": 17990,
@@ -61,7 +61,7 @@
       "activo": true
     },
     {
-      "id": 7,
+      "id": "7",
       "nombre": "EXIT: El laberinto maldito",
       "categoria": "Juegos de Estrategia",
       "precio": 39990,
@@ -71,7 +71,7 @@
       "activo": true
     },
     {
-      "id": 8,
+      "id": "8",
       "nombre": "CATAN",
       "categoria": "Juegos de Estrategia",
       "precio": 29990,
@@ -81,7 +81,7 @@
       "activo": true
     },
     {
-      "id": 9,
+      "id": "9",
       "nombre": "La Tripulación: Misión Mar Profundo",
       "categoria": "Juegos de Estrategia",
       "precio": 17990,
@@ -91,7 +91,7 @@
       "activo": true
     },
     {
-      "id": 10,
+      "id": "10",
       "nombre": "Si te ríes, tomas",
       "categoria": "Juegos de Fiesta",
       "precio": 14990,
@@ -101,7 +101,7 @@
       "activo": true
     },
     {
-      "id": 11,
+      "id": "11",
       "nombre": "Curao Volao o Weón para Adultos",
       "categoria": "Juegos de Fiesta",
       "precio": 15990,
@@ -111,7 +111,7 @@
       "activo": true
     },
     {
-      "id": 12,
+      "id": "12",
       "nombre": "Mójate el potito",
       "categoria": "Juegos de Fiesta",
       "precio": 12990,
@@ -121,14 +121,14 @@
       "activo": false
     },
     {
-      "id": 13,
       "nombre": "Mójate el potito",
       "categoria": "Juegos de Fiesta",
       "precio": 12990,
       "descuento": "Sin descuento",
-      "stock": 21,
+      "stock": 13,
       "imagen": "img/Mojate .webp",
-      "activo": true
+      "activo": true,
+      "id": "vOrSUTc7jqc"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

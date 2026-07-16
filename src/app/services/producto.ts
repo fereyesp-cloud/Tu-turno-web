@@ -6,15 +6,25 @@ import { Observable, map } from 'rxjs';
  * Interfaz que define la estructura de un producto
  */
 export interface Producto {
+  /** ID único del producto */
   id?: number;
+  /** Nombre del producto */
   nombre: string;
+  /** Categoría del producto */
   categoria: string;
+  /** Descripción del producto */
   descripcion?: string;
+  /** Precio numérico del producto */
   precio: number;
+  /** Precio formateado del producto */
   precioData?: string;
+  /** Información de descuento */
   descuento: string;
+  /** Ruta de la imagen del producto */
   imagen: string;
+  /** Stock disponible */
   stock?: number;
+  /** Estado activo/inactivo del producto */
   activo?: boolean;
 }
 

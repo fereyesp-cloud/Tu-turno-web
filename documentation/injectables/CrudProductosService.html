@@ -109,7 +109,7 @@
 
 <ol class="breadcrumb">
   <li class="breadcrumb-item">Injectables</li>
-  <li class="breadcrumb-item" >ProductoService</li>
+  <li class="breadcrumb-item" >CrudProductosService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -133,7 +133,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/services/producto.ts</code>
+            <code>src/app/services/crud-productos.ts</code>
         </p>
 
 
@@ -141,7 +141,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Servicio para la gestión de productos de la tienda</p>
+                <p>Servicio CRUD para gestión de productos via json-server</p>
 
             </p>
 
@@ -176,14 +176,16 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#agruparPorCategoria" >agruparPorCategoria</a>
+                                <a href="#actualizarProducto" >actualizarProducto</a>
                             </li>
                             <li>
-                                <a href="#getDestacados" >getDestacados</a>
+                                <a href="#crearProducto" >crearProducto</a>
                             </li>
                             <li>
-                                <a href="#getPorCategoria" >getPorCategoria</a>
+                                <a href="#eliminarProducto" >eliminarProducto</a>
+                            </li>
+                            <li>
+                                <a href="#getProductoPorId" >getProductoPorId</a>
                             </li>
                             <li>
                                 <a href="#getProductos" >getProductos</a>
@@ -211,7 +213,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/services/producto.ts:40</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/services/crud-productos.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -258,33 +260,31 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="agruparPorCategoria"></a>
+                    <a name="actualizarProducto"></a>
                     <span class="name">
-                            <span class="modifier">Private</span>
-                        <span ><b>agruparPorCategoria</b></span>
-                        <a href="#agruparPorCategoria"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>actualizarProducto</b></span>
+                        <a href="#actualizarProducto"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>agruparPorCategoria(productos: any[])</code>
+<code>actualizarProducto(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, producto: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="61"
-                                    class="link-to-prism">src/app/services/producto.ts:61</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="50"
+                                    class="link-to-prism">src/app/services/crud-productos.ts:50</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Agrupa los productos por categoría</p>
+                        <div class="io-description"><p>Actualiza un producto existente</p>
 </div>
 
                             <div class="io-description">
@@ -301,9 +301,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>productos</td>
+                                                <td>id</td>
                                             <td>
-                                                        <code>any[]</code>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
                                             </td>
 
                                             <td>
@@ -312,7 +312,23 @@
 
 
                                             <td>
-                                                    <p>Lista de productos</p>
+                                                    <p>ID del producto a actualizar</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>producto</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Objeto con los datos actualizados</p>
 
                                             </td>
                                         </tr>
@@ -320,11 +336,11 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>any[]</code>
+                            <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
 
                         </div>
                             <div class="io-description">
-                                <p>Array de categorías con sus productos</p>
+                                <p>Observable con el producto actualizado</p>
 
                             </div>
                 </td>
@@ -335,74 +351,31 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getDestacados"></a>
+                    <a name="crearProducto"></a>
                     <span class="name">
-                        <span ><b>getDestacados</b></span>
-                        <a href="#getDestacados"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>crearProducto</b></span>
+                        <a href="#crearProducto"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getDestacados()</code>
+<code>crearProducto(producto: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                 </td>
             </tr>
 
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="83"
-                                    class="link-to-prism">src/app/services/producto.ts:83</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="40"
+                                    class="link-to-prism">src/app/services/crud-productos.ts:40</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Obtiene los juegos destacados (primero de cada categoría)</p>
-</div>
-
-                        <div class="io-description">
-                            <b>Returns : </b>    <code>Observable&lt;any[]&gt;</code>
-
-                        </div>
-                            <div class="io-description">
-                                <p>Observable con un juego destacado de cada categoría</p>
-
-                            </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getPorCategoria"></a>
-                    <span class="name">
-                        <span ><b>getPorCategoria</b></span>
-                        <a href="#getPorCategoria"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>getPorCategoria(categoria: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-                    <tr>
-                        <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="75"
-                                    class="link-to-prism">src/app/services/producto.ts:75</a></div>
-                        </td>
-                    </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-description"><p>Obtiene los juegos de una categoría específica</p>
+                        <div class="io-description"><p>Crea un nuevo producto</p>
 </div>
 
                             <div class="io-description">
@@ -419,9 +392,9 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                                <td>categoria</td>
+                                                <td>producto</td>
                                             <td>
-                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
                                             </td>
 
                                             <td>
@@ -430,7 +403,7 @@
 
 
                                             <td>
-                                                    <p>Nombre de la categoría</p>
+                                                    <p>Objeto del producto a crear</p>
 
                                             </td>
                                         </tr>
@@ -438,11 +411,161 @@
                                 </table>
                             </div>
                         <div class="io-description">
-                            <b>Returns : </b>    <code>Observable&lt;any[]&gt;</code>
+                            <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
 
                         </div>
                             <div class="io-description">
-                                <p>Observable con los productos de esa categoría</p>
+                                <p>Observable con el producto creado</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="eliminarProducto"></a>
+                    <span class="name">
+                        <span ><b>eliminarProducto</b></span>
+                        <a href="#eliminarProducto"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>eliminarProducto(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="59"
+                                    class="link-to-prism">src/app/services/crud-productos.ts:59</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Elimina un producto físicamente</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>ID del producto a eliminar</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Observable vacío</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getProductoPorId"></a>
+                    <span class="name">
+                        <span ><b>getProductoPorId</b></span>
+                        <a href="#getProductoPorId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getProductoPorId(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="31"
+                                    class="link-to-prism">src/app/services/crud-productos.ts:31</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Obtiene un producto por id</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>ID del producto</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Observable con el producto</p>
 
                             </div>
                 </td>
@@ -469,23 +592,23 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="48"
-                                    class="link-to-prism">src/app/services/producto.ts:48</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="22"
+                                    class="link-to-prism">src/app/services/crud-productos.ts:22</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Obtiene todos los productos activos</p>
+                        <div class="io-description"><p>Obtiene todos los productos</p>
 </div>
 
                         <div class="io-description">
-                            <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+                            <b>Returns : </b>    <code>Observable&lt;any[]&gt;</code>
 
                         </div>
                             <div class="io-description">
-                                <p>Observable con todos los productos</p>
+                                <p>Observable con lista de productos</p>
 
                             </div>
                 </td>
@@ -518,18 +641,18 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;/api/productos&#x27;</code>
+                        <i>Default value : </i><code>&#x27;http://localhost:3000/productos&#x27;</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/services/producto.ts:40</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/services/crud-productos.ts:14</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>URL base de json-server</p>
+                    <div class="io-description"><p>URL base de la API json-server</p>
 </div>
                 </td>
             </tr>
@@ -544,90 +667,64 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { HttpClient } from &#x27;@angular/common/http&#x27;;
-import { Observable, map } from &#x27;rxjs&#x27;;
+import { Observable } from &#x27;rxjs&#x27;;
 
 /**
- * Interfaz que define la estructura de un producto
- */
-export interface Producto {
-  /** ID único del producto */
-  id?: number;
-  /** Nombre del producto */
-  nombre: string;
-  /** Categoría del producto */
-  categoria: string;
-  /** Descripción del producto */
-  descripcion?: string;
-  /** Precio numérico del producto */
-  precio: number;
-  /** Precio formateado del producto */
-  precioData?: string;
-  /** Información de descuento */
-  descuento: string;
-  /** Ruta de la imagen del producto */
-  imagen: string;
-  /** Stock disponible */
-  stock?: number;
-  /** Estado activo/inactivo del producto */
-  activo?: boolean;
-}
-
-/**
- * Servicio para la gestión de productos de la tienda
+ * Servicio CRUD para gestión de productos via json-server
  */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
-export class ProductoService {
+export class CrudProductosService {
 
-  /** URL base de json-server */
-  private url &#x3D; &#x27;/api/productos&#x27;;
+  /** URL base de la API json-server */
+  private url &#x3D; &#x27;http://localhost:3000/productos&#x27;;
 
   constructor(private http: HttpClient) {}
 
   /**
-   * Obtiene todos los productos activos
-   * @returns Observable con todos los productos
+   * Obtiene todos los productos
+   * @returns Observable con lista de productos
    */
-  getProductos(): Observable&lt;any&gt; {
-    return this.http.get&lt;any[]&gt;(this.url).pipe(
-      map((productos: any[]) &#x3D;&gt; ({
-        categorias: this.agruparPorCategoria(productos.filter(p &#x3D;&gt; p.activo !&#x3D;&#x3D; false))
-      }))
-    );
+  getProductos(): Observable&lt;any[]&gt; {
+    return this.http.get&lt;any[]&gt;(this.url);
   }
 
   /**
-   * Agrupa los productos por categoría
-   * @param productos Lista de productos
-   * @returns Array de categorías con sus productos
+   * Obtiene un producto por id
+   * @param id ID del producto
+   * @returns Observable con el producto
    */
-  private agruparPorCategoria(productos: any[]): any[] {
-    const mapa: { [key: string]: any[] } &#x3D; {};
-    productos.forEach(p &#x3D;&gt; {
-      if (!mapa[p.categoria]) mapa[p.categoria] &#x3D; [];
-      mapa[p.categoria].push(p);
-    });
-    return Object.keys(mapa).map(cat &#x3D;&gt; ({ categoria: cat, productos: mapa[cat] }));
+  getProductoPorId(id: number): Observable&lt;any&gt; {
+    return this.http.get&lt;any&gt;(&#x60;${this.url}/${id}&#x60;);
   }
 
   /**
-   * Obtiene los juegos de una categoría específica
-   * @param categoria Nombre de la categoría
-   * @returns Observable con los productos de esa categoría
+   * Crea un nuevo producto
+   * @param producto Objeto del producto a crear
+   * @returns Observable con el producto creado
    */
-  getPorCategoria(categoria: string): Observable&lt;any[]&gt; {
-    return this.http.get&lt;any[]&gt;(&#x60;${this.url}?categoria&#x3D;${categoria}&amp;activo&#x3D;true&#x60;);
+  crearProducto(producto: any): Observable&lt;any&gt; {
+    return this.http.post&lt;any&gt;(this.url, producto);
   }
 
   /**
-   * Obtiene los juegos destacados (primero de cada categoría)
-   * @returns Observable con un juego destacado de cada categoría
+   * Actualiza un producto existente
+   * @param id ID del producto a actualizar
+   * @param producto Objeto con los datos actualizados
+   * @returns Observable con el producto actualizado
    */
-  getDestacados(): Observable&lt;any[]&gt; {
-    return this.getProductos().pipe(
-      map((data: any) &#x3D;&gt; data.categorias.map((c: any) &#x3D;&gt; c.productos[0]))
-    );
+  actualizarProducto(id: number, producto: any): Observable&lt;any&gt; {
+    return this.http.put&lt;any&gt;(&#x60;${this.url}/${id}&#x60;, producto);
+  }
+
+  /**
+  * Elimina un producto físicamente
+  * @param id ID del producto a eliminar
+  * @returns Observable vacío
+  */
+  eliminarProducto(id: number): Observable&lt;any&gt; {
+    return this.http.delete&lt;any&gt;(&#x60;${this.url}/${id}&#x60;);
   }
 }</code></pre>
     </div>
@@ -672,7 +769,7 @@ export class ProductoService {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'ProductoService.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'CrudProductosService.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

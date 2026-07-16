@@ -142,9 +142,8 @@
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>Componente para el home de tu turno web
-contiene el home
-agregar productos al carro</p>
+        <p>Componente para el home de Tu Turno Web
+Muestra los juegos destacados y agrega productos al carrito</p>
 
     </p>
 
@@ -185,6 +184,7 @@ agregar productos al carro</p>
                                 <code><a href="https://angular.io/api/router/RouterLink" target="_blank" >RouterLink</a></code>
                             <code>NgFor</code>
                                 <code><a href="https://angular.io/api/common/NgIf" target="_blank" >NgIf</a></code>
+                                <code><a href="https://angular.io/api/common/DecimalPipe" target="_blank" >DecimalPipe</a></code>
                 </td>
             </tr>
 
@@ -225,6 +225,9 @@ agregar productos al carro</p>
                         <ul class="index-list">
                             <li>
                                 <a href="#beneficios" >beneficios</a>
+                            </li>
+                            <li>
+                                <a href="#cargando" >cargando</a>
                             </li>
                             <li>
                                 <a href="#juegosDestacados" >juegosDestacados</a>
@@ -272,12 +275,12 @@ agregar productos al carro</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(session: <a href="../injectables/SessionService.html" target="_self">SessionService</a>, productoService: <a href="../injectables/ProductoService.html" target="_self">ProductoService</a>)</code>
+<code>constructor(session: <a href="../injectables/SessionService.html" target="_self">SessionService</a>, productoService: <a href="../injectables/ProductoService.html" target="_self">ProductoService</a>, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/pages/home/home.ts:29</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/pages/home/home.ts:33</a></div>
                             </td>
                         </tr>
 
@@ -311,6 +314,18 @@ agregar productos al carro</p>
                                                   
                                                         <td>
                                                                         <code><a href="../injectables/ProductoService.html" target="_self" >ProductoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cdr</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -356,15 +371,15 @@ agregar productos al carro</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="49"
-                                    class="link-to-prism">src/app/pages/home/home.ts:49</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="65"
+                                    class="link-to-prism">src/app/pages/home/home.ts:65</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Funciona de agregar productos al carro desde el home</p>
+                        <div class="io-description"><p>Agrega un producto al carrito desde el home</p>
 </div>
 
                             <div class="io-description">
@@ -408,7 +423,7 @@ agregar productos al carro</p>
 
 
                                             <td>
-                                                    <p>precio del producto</p>
+                                                    <p>Precio del producto</p>
 
                                             </td>
                                         </tr>
@@ -424,7 +439,7 @@ agregar productos al carro</p>
 
 
                                             <td>
-                                                    <p>imegen del producto</p>
+                                                    <p>Ruta de la imagen del producto</p>
 
                                             </td>
                                         </tr>
@@ -462,15 +477,15 @@ agregar productos al carro</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="36"
-                                    class="link-to-prism">src/app/pages/home/home.ts:36</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="44"
+                                    class="link-to-prism">src/app/pages/home/home.ts:44</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                        <div class="io-description"><p>Inicialización del home — carga los juegos destacados con sus links de categoría</p>
+                        <div class="io-description"><p>Inicialización del home — carga los juegos destacados desde la API</p>
 </div>
 
                         <div class="io-description">
@@ -515,13 +530,50 @@ agregar productos al carro</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/pages/home/home.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/pages/home/home.ts:29</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>Lista de beneficios mostrados en la sección de beneficios</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargando"></a>
+                    <span class="name">
+                        <span ><b>cargando</b></span>
+                        <a href="#cargando"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/pages/home/home.ts:26</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica si los datos están cargando</p>
 </div>
                 </td>
             </tr>
@@ -541,7 +593,7 @@ agregar productos al carro</p>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>    <code>(unknown)[]</code>
+                        <i>Type : </i>    <code>any[]</code>
 
                     </td>
                 </tr>
@@ -552,13 +604,13 @@ agregar productos al carro</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/pages/home/home.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/pages/home/home.ts:23</a></div>
                         </td>
                     </tr>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Lista de juegos destacados mostrados en el home con su link de categoría</p>
+                    <div class="io-description"><p>Lista de juegos destacados con su link de categoría</p>
 </div>
                 </td>
             </tr>
@@ -595,7 +647,7 @@ agregar productos al carro</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Mensaje al agregar un producto al carro</p>
+                    <div class="io-description"><p>Mensaje al agregar un producto al carrito</p>
 </div>
                 </td>
             </tr>
@@ -622,7 +674,7 @@ agregar productos al carro</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/pages/home/home.ts:31</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/pages/home/home.ts:36</a></div>
                         </td>
                     </tr>
 
@@ -635,54 +687,70 @@ agregar productos al carro</p>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, ChangeDetectorRef } from &#x27;@angular/core&#x27;;
 import { RouterLink } from &#x27;@angular/router&#x27;;
-import { NgFor, NgIf } from &#x27;@angular/common&#x27;;
+import { NgFor, NgIf, DecimalPipe  } from &#x27;@angular/common&#x27;;
 import { SessionService } from &#x27;../../services/session&#x27;;
-import { ProductoService, Producto } from &#x27;../../services/producto&#x27;;
+import { ProductoService } from &#x27;../../services/producto&#x27;;
 
 /**
- * Componente para el home de tu turno web
- * contiene el home
- * agregar productos al carro
+ * Componente para el home de Tu Turno Web
+ * Muestra los juegos destacados y agrega productos al carrito
  */
 @Component({
   selector: &#x27;app-home&#x27;,
-  imports: [RouterLink, NgFor, NgIf],
+  imports: [RouterLink, NgFor, NgIf, DecimalPipe ],
   templateUrl: &#x27;./home.html&#x27;,
   styleUrl: &#x27;./home.css&#x27;
 })
 export class Home implements OnInit {
-  /**Mensaje al agregar un producto al carro */
-  mensajeCarrito: string &#x3D; &#x27;&#x27;;
-  /** Lista de juegos destacados mostrados en el home con su link de categoría */
-  juegosDestacados: (Producto &amp; { link: string })[] &#x3D; [];
 
- /** Lista de beneficios mostrados en la sección de beneficios */
+  /** Mensaje al agregar un producto al carrito */
+  mensajeCarrito: string &#x3D; &#x27;&#x27;;
+
+  /** Lista de juegos destacados con su link de categoría */
+  juegosDestacados: any[] &#x3D; [];
+
+  /** Indica si los datos están cargando */
+  cargando: boolean &#x3D; true;
+
+  /** Lista de beneficios mostrados en la sección de beneficios */
   beneficios &#x3D; [
     { titulo: &#x27;Juegos populares&#x27;, descripcion: &#x27;Siempre ofrecemos los juegos más jugados del momento&#x27; },
     { titulo: &#x27;Entregas inmediatas&#x27;, descripcion: &#x27;Trabajamos con red express para los envíos&#x27; },
     { titulo: &#x27;Juegos para todos/as&#x27;, descripcion: &#x27;Tenemos juegos para distintos tipos de personas y gustos&#x27; }
   ];
 
-  constructor(public session: SessionService, private productoService: ProductoService) {}
+  constructor(
+    public session: SessionService,
+    private productoService: ProductoService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   /**
-  * Inicialización del home — carga los juegos destacados con sus links de categoría
-  */
+   * Inicialización del home — carga los juegos destacados desde la API
+   */
   ngOnInit() {
-    const destacados &#x3D; this.productoService.getDestacados();
     const links &#x3D; [&#x27;/juegos/rol&#x27;, &#x27;/juegos/familiares&#x27;, &#x27;/juegos/estrategia&#x27;, &#x27;/juegos/fiesta&#x27;];
-    this.juegosDestacados &#x3D; destacados.map((juego, i) &#x3D;&gt; ({ ...juego, link: links[i] }));
+    this.productoService.getDestacados().subscribe({
+      next: (data) &#x3D;&gt; {
+        this.juegosDestacados &#x3D; data.map((juego: any, i: number) &#x3D;&gt; ({ ...juego, link: links[i] }));
+        this.cargando &#x3D; false;
+        this.cdr.detectChanges();
+      },
+      error: () &#x3D;&gt; {
+        this.cargando &#x3D; false;
+        this.cdr.detectChanges();
+      }
+    });
   }
 
   /**
-   * Funciona de agregar productos al carro desde el home
+   * Agrega un producto al carrito desde el home
    * @param nombre Nombre del producto
-   * @param precio precio del producto
-   * @param imagen imegen del producto
+   * @param precio Precio del producto
+   * @param imagen Ruta de la imagen del producto
    */
-
   agregarAlCarrito(nombre: string, precio: string, imagen: string) {
     this.session.agregarAlCarrito(nombre, precio, imagen);
     this.mensajeCarrito &#x3D; &#x60;&quot;${nombre}&quot; agregado al carrito&#x60;;
@@ -692,8 +760,7 @@ export class Home implements OnInit {
     </div>
 
     <div class="tab-pane fade " id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;!-- HEADER --&gt;
-&lt;header class&#x3D;&quot;encabezado&quot; id&#x3D;&quot;inicio&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;header class&#x3D;&quot;encabezado&quot; id&#x3D;&quot;inicio&quot;&gt;
   &lt;div class&#x3D;&quot;contenedor encabezado-contenido&quot;&gt;
     &lt;h1&gt;Tu turno web&lt;/h1&gt;
     &lt;p&gt;Bienvenido a Tu Turno Web&lt;/p&gt;
@@ -703,7 +770,6 @@ export class Home implements OnInit {
 &lt;/header&gt;
 
 &lt;main&gt;
-  &lt;!-- QUIÉNES SOMOS --&gt;
   &lt;section class&#x3D;&quot;seccion nosotros&quot; id&#x3D;&quot;nosotros&quot;&gt;
     &lt;div class&#x3D;&quot;contenedor&quot;&gt;
       &lt;h2&gt;Quiénes somos&lt;/h2&gt;
@@ -711,34 +777,33 @@ export class Home implements OnInit {
     &lt;/div&gt;
   &lt;/section&gt;
 
-  &lt;!-- CATEGORÍAS --&gt;
   &lt;section class&#x3D;&quot;seccion menu&quot; id&#x3D;&quot;menu&quot;&gt;
     &lt;div class&#x3D;&quot;contenedor&quot;&gt;
       &lt;h2&gt;Categorías destacadas&lt;/h2&gt;
       &lt;p class&#x3D;&quot;texto-intro&quot;&gt;juegos con mayor popularidad&lt;/p&gt;
       &lt;div class&#x3D;&quot;alert alert-success&quot; *ngIf&#x3D;&quot;mensajeCarrito&quot;&gt;{{ mensajeCarrito }}&lt;/div&gt;
-      &lt;div class&#x3D;&quot;contenedor-tarjetas&quot;&gt;
 
+      &lt;div *ngIf&#x3D;&quot;cargando&quot; class&#x3D;&quot;text-center mt-4&quot;&gt;
+        &lt;p&gt;Cargando productos...&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;contenedor-tarjetas&quot; *ngIf&#x3D;&quot;!cargando&quot;&gt;
         &lt;article class&#x3D;&quot;tarjeta&quot; *ngFor&#x3D;&quot;let juego of juegosDestacados&quot;&gt;
           &lt;img [src]&#x3D;&quot;juego.imagen&quot; [alt]&#x3D;&quot;juego.nombre&quot;&gt;
           &lt;div class&#x3D;&quot;tarjeta-contenido&quot;&gt;
-            &lt;span class&#x3D;&quot;categoria&quot;&gt;{{ juego.categoria }}&lt;/span&gt;
             &lt;h3&gt;{{ juego.nombre }}&lt;/h3&gt;
-            &lt;p&gt;{{ juego.descripcion }}&lt;/p&gt;
-            &lt;p class&#x3D;&quot;precio&quot;&gt;{{ juego.precio }}&lt;/p&gt;
-            &lt;p class&#x3D;&quot;descuento&quot;&gt;10% con pagos en transferencia&lt;/p&gt;
+            &lt;p class&#x3D;&quot;precio&quot;&gt;${{ juego.precio | number:&#x27;1.0-0&#x27; }}&lt;/p&gt;
+            &lt;p class&#x3D;&quot;descuento&quot;&gt;{{ juego.descuento }}&lt;/p&gt;
             &lt;div class&#x3D;&quot;d-flex gap-2 align-items-center&quot;&gt;
               &lt;a [routerLink]&#x3D;&quot;juego.link&quot; class&#x3D;&quot;btn btn-outline-primary&quot;&gt;Ver juegos&lt;/a&gt;
-              &lt;button class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;agregarAlCarrito(juego.nombre, juego.precioData, juego.imagen)&quot;&gt;🛒 Agregar al carrito&lt;/button&gt;
+              &lt;button class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;agregarAlCarrito(juego.nombre, juego.precio, juego.imagen)&quot;&gt;🛒 Agregar al carrito&lt;/button&gt;
             &lt;/div&gt;
           &lt;/div&gt;
         &lt;/article&gt;
-
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/section&gt;
 
-  &lt;!-- BENEFICIOS --&gt;
   &lt;section class&#x3D;&quot;seccion beneficios&quot; id&#x3D;&quot;beneficios&quot;&gt;
     &lt;div class&#x3D;&quot;contenedor&quot;&gt;
       &lt;h2&gt;¿Por qué elegirnos?&lt;/h2&gt;
@@ -751,7 +816,6 @@ export class Home implements OnInit {
     &lt;/div&gt;
   &lt;/section&gt;
 
-  &lt;!-- CONTACTO --&gt;
   &lt;section class&#x3D;&quot;seccion contacto&quot; id&#x3D;&quot;contacto&quot;&gt;
     &lt;div class&#x3D;&quot;contenedor&quot;&gt;
       &lt;h2&gt;Contacto&lt;/h2&gt;
@@ -760,11 +824,8 @@ export class Home implements OnInit {
       &lt;a routerLink&#x3D;&quot;/&quot; class&#x3D;&quot;boton-secundario&quot;&gt;volver al inicio&lt;/a&gt;
     &lt;/div&gt;
   &lt;/section&gt;
-
-  
 &lt;/main&gt;
 
-&lt;!-- FOOTER --&gt;
 &lt;footer class&#x3D;&quot;pie-pagina&quot;&gt;
   &lt;p&gt;© 2026 Tu turno Web — Ejemplo académico DSY2202&lt;/p&gt;
 &lt;/footer&gt;</code></pre>
@@ -796,8 +857,8 @@ export class Home implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><!-- HEADER --><header class="encabezado" id="inicio">  <div class="contenedor encabezado-contenido">    <h1>Tu turno web</h1>    <p>Bienvenido a Tu Turno Web</p>    <a href="#menu" class="boton-principal">ver menú</a>    <a routerLink="/registro" class="boton-principal">Registrarse</a>  </div></header><main>  <!-- QUIÉNES SOMOS -->  <section class="seccion nosotros" id="nosotros">    <div class="contenedor">      <h2>Quiénes somos</h2>      <p>En Tu turno web somos una PYME que se encarga de mostrar y vender distintos tipos de juegos para la familia o amistades</p>    </div>  </section>  <!-- CATEGORÍAS -->  <section class="seccion menu" id="menu">    <div class="contenedor">      <h2>Categorías destacadas</h2>      <p class="texto-intro">juegos con mayor popularidad</p>      <div class="alert alert-success" *ngIf="mensajeCarrito">{{ mensajeCarrito }}</div>      <div class="contenedor-tarjetas">        <article class="tarjeta" *ngFor="let juego of juegosDestacados">          <img [src]="juego.imagen" [alt]="juego.nombre">          <div class="tarjeta-contenido">            <span class="categoria">{{ juego.categoria }}</span>            <h3>{{ juego.nombre }}</h3>            <p>{{ juego.descripcion }}</p>            <p class="precio">{{ juego.precio }}</p>            <p class="descuento">10% con pagos en transferencia</p>            <div class="d-flex gap-2 align-items-center">              <a [routerLink]="juego.link" class="btn btn-outline-primary">Ver juegos</a>              <button class="btn btn-primary" (click)="agregarAlCarrito(juego.nombre, juego.precioData, juego.imagen)">🛒 Agregar al carrito</button>            </div>          </div>        </article>      </div>    </div>  </section>  <!-- BENEFICIOS -->  <section class="seccion beneficios" id="beneficios">    <div class="contenedor">      <h2>¿Por qué elegirnos?</h2>      <div class="contenedor-beneficios">        <article class="beneficios" *ngFor="let beneficio of beneficios">          <h3>{{ beneficio.titulo }}</h3>          <p>{{ beneficio.descripcion }}</p>        </article>      </div>    </div>  </section>  <!-- CONTACTO -->  <section class="seccion contacto" id="contacto">    <div class="contenedor">      <h2>Contacto</h2>      <p>Visitanos de lunes a viernes entre 08:30 y 19:00 hrs</p>      <p>Dirección: Avenida 11 de julio, Santiago</p>      <a routerLink="/" class="boton-secundario">volver al inicio</a>    </div>  </section>  </main><!-- FOOTER --><footer class="pie-pagina">  <p>© 2026 Tu turno Web — Ejemplo académico DSY2202</p></footer></div>'
-    var COMPONENTS = [{'name': 'AdminDashboard', 'selector': 'app-admin-dashboard'},{'name': 'App', 'selector': 'app-root'},{'name': 'Carrito', 'selector': 'app-carrito'},{'name': 'Catalogo', 'selector': 'app-catalogo'},{'name': 'Home', 'selector': 'app-home'},{'name': 'JuegosEstrategia', 'selector': 'app-juegos-estrategia'},{'name': 'JuegosFamiliares', 'selector': 'app-juegos-familiares'},{'name': 'JuegosFiesta', 'selector': 'app-juegos-fiesta'},{'name': 'JuegosRol', 'selector': 'app-juegos-rol'},{'name': 'Login', 'selector': 'app-login'},{'name': 'Navbar', 'selector': 'app-navbar'},{'name': 'Perfil', 'selector': 'app-perfil'},{'name': 'RecuperarContrasena', 'selector': 'app-recuperar-contrasena'},{'name': 'Registro', 'selector': 'app-registro'},{'name': 'TemplatePlaygroundComponent', 'selector': 'template-playground-root'}];
+        var COMPONENT_TEMPLATE = '<div><header class="encabezado" id="inicio">  <div class="contenedor encabezado-contenido">    <h1>Tu turno web</h1>    <p>Bienvenido a Tu Turno Web</p>    <a href="#menu" class="boton-principal">ver menú</a>    <a routerLink="/registro" class="boton-principal">Registrarse</a>  </div></header><main>  <section class="seccion nosotros" id="nosotros">    <div class="contenedor">      <h2>Quiénes somos</h2>      <p>En Tu turno web somos una PYME que se encarga de mostrar y vender distintos tipos de juegos para la familia o amistades</p>    </div>  </section>  <section class="seccion menu" id="menu">    <div class="contenedor">      <h2>Categorías destacadas</h2>      <p class="texto-intro">juegos con mayor popularidad</p>      <div class="alert alert-success" *ngIf="mensajeCarrito">{{ mensajeCarrito }}</div>      <div *ngIf="cargando" class="text-center mt-4">        <p>Cargando productos...</p>      </div>      <div class="contenedor-tarjetas" *ngIf="!cargando">        <article class="tarjeta" *ngFor="let juego of juegosDestacados">          <img [src]="juego.imagen" [alt]="juego.nombre">          <div class="tarjeta-contenido">            <h3>{{ juego.nombre }}</h3>            <p class="precio">${{ juego.precio | number:\'1.0-0\' }}</p>            <p class="descuento">{{ juego.descuento }}</p>            <div class="d-flex gap-2 align-items-center">              <a [routerLink]="juego.link" class="btn btn-outline-primary">Ver juegos</a>              <button class="btn btn-primary" (click)="agregarAlCarrito(juego.nombre, juego.precio, juego.imagen)">🛒 Agregar al carrito</button>            </div>          </div>        </article>      </div>    </div>  </section>  <section class="seccion beneficios" id="beneficios">    <div class="contenedor">      <h2>¿Por qué elegirnos?</h2>      <div class="contenedor-beneficios">        <article class="beneficios" *ngFor="let beneficio of beneficios">          <h3>{{ beneficio.titulo }}</h3>          <p>{{ beneficio.descripcion }}</p>        </article>      </div>    </div>  </section>  <section class="seccion contacto" id="contacto">    <div class="contenedor">      <h2>Contacto</h2>      <p>Visitanos de lunes a viernes entre 08:30 y 19:00 hrs</p>      <p>Dirección: Avenida 11 de julio, Santiago</p>      <a routerLink="/" class="boton-secundario">volver al inicio</a>    </div>  </section></main><footer class="pie-pagina">  <p>© 2026 Tu turno Web — Ejemplo académico DSY2202</p></footer></div>'
+    var COMPONENTS = [{'name': 'AdminDashboard', 'selector': 'app-admin-dashboard'},{'name': 'App', 'selector': 'app-root'},{'name': 'Carrito', 'selector': 'app-carrito'},{'name': 'Catalogo', 'selector': 'app-catalogo'},{'name': 'Home', 'selector': 'app-home'},{'name': 'JuegosEstrategia', 'selector': 'app-juegos-estrategia'},{'name': 'JuegosFamiliares', 'selector': 'app-juegos-familiares'},{'name': 'JuegosFiesta', 'selector': 'app-juegos-fiesta'},{'name': 'JuegosRol', 'selector': 'app-juegos-rol'},{'name': 'Login', 'selector': 'app-login'},{'name': 'Navbar', 'selector': 'app-navbar'},{'name': 'Perfil', 'selector': 'app-perfil'},{'name': 'ProductosApi', 'selector': 'app-productos-api'},{'name': 'RecuperarContrasena', 'selector': 'app-recuperar-contrasena'},{'name': 'Registro', 'selector': 'app-registro'},{'name': 'TemplatePlaygroundComponent', 'selector': 'template-playground-root'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'Home'};
 </script>

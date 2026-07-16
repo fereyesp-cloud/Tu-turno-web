@@ -51,13 +51,12 @@ export class CrudProductosService {
     return this.http.put<any>(`${this.url}/${id}`, producto);
   }
 
- /**
- * Eliminación lógica — marca el producto como inactivo
- * @param id ID del producto a desactivar
- * @param producto Objeto completo del producto
- * @returns Observable con el producto actualizado
- */
-  eliminarProducto(id: number, producto: any): Observable<any> {
-    return this.http.put<any>(`${this.url}/${id}`, { ...producto, activo: false });
+  /**
+  * Elimina un producto físicamente
+  * @param id ID del producto a eliminar
+  * @returns Observable vacío
+  */
+  eliminarProducto(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.url}/${id}`);
   }
 }

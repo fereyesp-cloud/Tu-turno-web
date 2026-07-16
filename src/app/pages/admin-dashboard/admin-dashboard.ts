@@ -109,7 +109,7 @@ export class AdminDashboard implements OnInit {
   /**
    * Guarda el producto — crea o actualiza según corresponda
    */
-  guardarProducto() {
+  async guardarProducto() {
     /**
      * Se valida que se rellen todos los campos
      */
@@ -150,14 +150,17 @@ export class AdminDashboard implements OnInit {
         }
       });
     } else {
-      this.crudService.crearProducto({ ...this.formulario, activo: true }).subscribe({
+      const productos = await this.crudService.getProductos().toPromise();
+      const maxId = productos ? Math.max(...productos.map((p: any) => typeof p.id === 'number' ? p.id : 0)) : 0;
+      this.crudService.crearProducto({ ...this.formulario, activo: true, id: maxId + 1 }).subscribe({
         next: () => {
           this.mostrarFormulario = false;
           this.cargarProductos();
         }
       });
     }
-  }
+    }
+  
 
   /**
   * Muestra confirmación antes de eliminar
@@ -173,14 +176,14 @@ export class AdminDashboard implements OnInit {
   */
   eliminarProducto() {
     if (this.productoPendienteEliminar) {
-      this.crudService.eliminarProducto(this.productoPendienteEliminar.id, this.productoPendienteEliminar).subscribe({
+      this.crudService.eliminarProducto(this.productoPendienteEliminar.id).subscribe({
         next: () => {
           this.mostrarConfirmacion = false;
           this.productoPendienteEliminar = null;
           this.cargarProductos();
         }
       });
-    } 
+    }
   }
 
   /**

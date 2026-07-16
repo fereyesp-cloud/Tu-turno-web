@@ -100,7 +100,7 @@
 <h1>Tu Turno Web</h1>
 <p>Aplicación web de tienda de juegos de mesa desarrollada con Angular 22, migrada desde un proyecto HTML/CSS/Bootstrap puro como parte del curso DSY2202.</p>
 <h2>Descripción</h2>
-<p>Tu Turno Web es una PYME ficticia que vende juegos de mesa. La aplicación permite a los usuarios navegar por categorías de juegos, registrarse, iniciar sesión, agregar productos al carrito y gestionar su perfil. Incluye además un panel de administración.</p>
+<p>Tu Turno Web es una PYME ficticia que vende juegos de mesa. La aplicación permite a los usuarios navegar por categorías de juegos, registrarse, iniciar sesión, agregar productos al carrito y gestionar su perfil. Incluye además un panel de administración con CRUD completo de productos.</p>
 <h2>Tecnologías utilizadas</h2>
 <ul>
 <li>Angular 22 (standalone components)</li>
@@ -110,18 +110,23 @@
 <li>HTML5 / CSS3</li>
 <li>localStorage / sessionStorage</li>
 <li>Vitest (pruebas unitarias)</li>
-<li>RxJS (<code>BehaviorSubject</code>)</li>
+<li>RxJS (<code>BehaviorSubject</code>, <code>Observable</code>)</li>
+<li>HttpClient (consumo de API REST)</li>
+<li>json-server (API REST local)</li>
+<li>Docker + NGINX (contenedorización)</li>
 </ul>
 <h2>Funcionalidades</h2>
 <ul>
 <li>Catálogo dinámico de juegos por categoría con ruta <code>/juegos/:categoria</code></li>
-<li>Registro de usuarios con formulario reactivo y validaciones</li>
+<li>Datos de productos consumidos desde json-server (API REST)</li>
+<li>Registro de usuarios con formulario reactivo, validaciones y detección de duplicados</li>
 <li>Login con redirección según rol (cliente / admin)</li>
 <li>Navbar global reactivo según sesión activa</li>
-<li>Carrito de compras persistente en localStorage</li>
+<li>Carrito de compras con cantidad por producto, subtotal y eliminación individual</li>
 <li>Perfil de usuario editable con formulario reactivo y validaciones</li>
-<li>Panel de administración con gestión de usuarios y productos</li>
+<li>Panel de administración con CRUD completo de productos (GET, POST, PUT, DELETE)</li>
 <li>Recuperación de contraseña con formulario reactivo</li>
+<li>Guards de rutas para proteger <code>/perfil</code> y <code>/admin</code></li>
 </ul>
 <h2>Credenciales de administrador</h2>
 <table class="table table-bordered compodoc-table">
@@ -142,15 +147,70 @@
 </tr>
 </tbody>
 </table>
-<h2>Instalación y ejecución</h2>
+<h2>Instalación y ejecución local</h2>
 <p>Clona el repositorio e instala las dependencias:</p>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">npm install</code></pre></div><p>Levanta el servidor de desarrollo:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">npm install --legacy-peer-deps</code></pre></div><p>Levanta json-server en una terminal:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">json-server db.json --port 3000</code></pre></div><p>Levanta Angular en otra terminal:</p>
 <b>Example :</b><div><pre class="line-numbers"><code class="language-bash">ng serve</code></pre></div><p>Abre el navegador en <code>http://localhost:4200/</code></p>
+<h2>Ejecución con Docker</h2>
+<p>Asegúrate de tener Docker Desktop instalado y corriendo. Luego ejecuta:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">docker-compose up --build</code></pre></div><p>Abre el navegador en <code>http://localhost</code></p>
+<p>Para detener los contenedores:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">docker-compose down</code></pre></div><h2>API REST (json-server)</h2>
+<p>Los productos se gestionan mediante una API REST local con json-server:</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th>Método</th>
+<th>Endpoint</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/api/productos</code></td>
+<td>Obtiene todos los productos</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/api/productos</code></td>
+<td>Crea un nuevo producto</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td><code>/api/productos/:id</code></td>
+<td>Actualiza un producto</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>/api/productos/:id</code></td>
+<td>Elimina un producto</td>
+</tr>
+</tbody>
+</table>
+<p>El archivo <code>db.json</code> contiene los datos con la siguiente estructura:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-json">{
+  &quot;productos&quot;: [
+    {
+      &quot;id&quot;: 1,
+      &quot;nombre&quot;: &quot;Caos en Neverwinter&quot;,
+      &quot;categoria&quot;: &quot;Juegos de Rol&quot;,
+      &quot;precio&quot;: 59990,
+      &quot;descuento&quot;: &quot;10% con pagos en transferencia&quot;,
+      &quot;imagen&quot;: &quot;img/caosNeverwinter .webp&quot;,
+      &quot;stock&quot;: 30,
+      &quot;activo&quot;: true
+    }
+  ]
+}</code></pre></div><h2>Documentación</h2>
+<p>Para generar y ver la documentación con Compodoc:</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">npm run compodoc</code></pre></div><p>Abre el navegador en <code>http://127.0.0.1:8080</code></p>
 <h2>Pruebas unitarias</h2>
-<p>El proyecto usa Vitest como framework de pruebas, que Angular 22 incluye por defecto en reemplazo de Karma/Jasmine. Vitest utiliza la misma sintaxis que Jasmine (<code>describe</code>, <code>it</code>, <code>expect</code>, <code>beforeEach</code>), por lo que es funcionalmente equivalente. Se intentó instalar Karma pero es incompatible con Angular 22 (solo soporta hasta Angular 21).</p>
+<p>El proyecto usa Vitest como framework de pruebas, que Angular 22 incluye por defecto en reemplazo de Karma/Jasmine. Vitest utiliza la misma sintaxis que Jasmine (<code>describe</code>, <code>it</code>, <code>expect</code>, <code>beforeEach</code>), por lo que es funcionalmente equivalente.</p>
 <p>Para ejecutar las pruebas:</p>
-<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">ng test</code></pre></div><p><strong>Resultado:</strong> 16 archivos de prueba, 20 tests, todos en verde ✅</p>
-<p><strong>Pruebas principales implementadas:</strong></p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">ng test</code></pre></div><p><strong>Resultado:</strong> 19 archivos de prueba, 31 tests, todos en verde ✅</p>
+<p><strong>Pruebas implementadas:</strong></p>
 <table class="table table-bordered compodoc-table">
 <thead>
 <tr>
@@ -171,6 +231,21 @@
 <td>Verifica que el campo correo sea inválido si no cumple el formato de email</td>
 </tr>
 <tr>
+<td><code>registro.spec.ts</code></td>
+<td>Contraseña inválida</td>
+<td>Verifica que la contraseña sea inválida si no cumple el patrón de seguridad</td>
+</tr>
+<tr>
+<td><code>registro.spec.ts</code></td>
+<td>Contraseñas no coinciden</td>
+<td>Verifica que confirmarContrasena tenga error si las contraseñas no coinciden</td>
+</tr>
+<tr>
+<td><code>registro.spec.ts</code></td>
+<td>Edad menor a 13</td>
+<td>Verifica que fechaNacimiento tenga error si el usuario tiene menos de 13 años</td>
+</tr>
+<tr>
 <td><code>session.spec.ts</code></td>
 <td>Creación del servicio</td>
 <td>Verifica que el <code>SessionService</code> se instancie correctamente</td>
@@ -180,48 +255,139 @@
 <td>Creación automática del admin</td>
 <td>Verifica que el servicio cree un usuario admin por defecto si no existe en localStorage</td>
 </tr>
+<tr>
+<td><code>admin-dashboard.spec.ts</code></td>
+<td>Mostrar formulario nuevo producto</td>
+<td>Verifica que el formulario se muestre al crear un nuevo producto</td>
+</tr>
+<tr>
+<td><code>admin-dashboard.spec.ts</code></td>
+<td>Ocultar formulario al cancelar</td>
+<td>Verifica que el formulario se oculte al cancelar</td>
+</tr>
+<tr>
+<td><code>admin-dashboard.spec.ts</code></td>
+<td>Cargar datos al editar</td>
+<td>Verifica que el formulario se llene con los datos del producto al editar</td>
+</tr>
+<tr>
+<td><code>admin-dashboard.spec.ts</code></td>
+<td>Mostrar confirmación al eliminar</td>
+<td>Verifica que el modal de confirmación se muestre al intentar eliminar</td>
+</tr>
+<tr>
+<td><code>admin-dashboard.spec.ts</code></td>
+<td>Ocultar confirmación al cancelar</td>
+<td>Verifica que el modal de confirmación se oculte al cancelar</td>
+</tr>
 </tbody>
 </table>
-<p>Adicionalmente, todos los componentes cuentan con una prueba de creación (<code>should create</code>) para validar el correcto montaje del componente.</p>
+<h2>Guards de rutas</h2>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th>Ruta</th>
+<th>Guard</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/perfil</code></td>
+<td><code>authGuard</code></td>
+<td>Redirige al login si no hay sesión activa</td>
+</tr>
+<tr>
+<td><code>/admin</code></td>
+<td><code>adminGuard</code></td>
+<td>Redirige al home si el usuario no es admin</td>
+</tr>
+</tbody>
+</table>
 <h2>Formularios reactivos y validaciones</h2>
 <p>Los formularios de <strong>Registro</strong>, <strong>Login</strong>, <strong>Recuperar contraseña</strong> y <strong>Perfil</strong> fueron migrados a Reactive Forms (<code>FormBuilder</code>, <code>FormGroup</code>, <code>Validators</code>).</p>
 <p><strong>Validaciones implementadas:</strong></p>
 <ul>
-<li>Todos los campos obligatorios no pueden estar vacíos (excepto dirección de despacho, que es opcional)</li>
+<li>Todos los campos obligatorios no pueden estar vacíos (excepto dirección de despacho)</li>
 <li>El correo debe seguir el formato de un email válido</li>
-<li>Las contraseñas (registro) deben coincidir entre sí</li>
-<li>La contraseña debe tener entre 6 y 18 caracteres, con al menos una mayúscula y un número</li>
+<li>Las contraseñas deben coincidir entre sí</li>
+<li>La contraseña debe tener entre 6 y 18 caracteres, con al menos una mayúscula, un número y un carácter especial</li>
 <li>La persona debe tener al menos 13 años para registrarse</li>
-<li>Cada formulario cuenta con botón de envío y botón de limpiar</li>
+<li>No se permiten correos ni nombres de usuario duplicados en el registro</li>
 </ul>
 <h2>Estructura del proyecto</h2>
-<p>src/app/</p>
-<p>├── pages/</p>
-<p>│   ├── home/</p>
-<p>│   ├── catalogo/</p>
-<p>│   ├── login/</p>
-<p>│   ├── registro/</p>
-<p>│   ├── recuperar-contrasena/</p>
-<p>│   ├── carrito/</p>
-<p>│   ├── perfil/</p>
-<p>│   └── admin-dashboard/</p>
-<p>├── shared/</p>
-<p>│   └── navbar/</p>
-<p>└── services/</p>
-<p>├── session.ts</p>
-<p>└── producto.ts</p>
+<p>src/app/
+├── guards/
+│   ├── auth-guard.ts
+│   └── admin.ts
+├── pages/
+│   ├── home/
+│   ├── catalogo/
+│   ├── productos-api/
+│   ├── login/
+│   ├── registro/
+│   ├── recuperar-contrasena/
+│   ├── carrito/
+│   ├── perfil/
+│   ├── admin-dashboard/
+│   ├── juegos-rol/
+│   ├── juegos-familiares/
+│   ├── juegos-estrategia/
+│   └── juegos-fiesta/
+├── shared/
+│   └── navbar/
+└── services/
+├── session.ts
+├── producto.ts
+└── crud-productos.ts</p>
+<h2>Docker</h2>
+<p>El proyecto incluye los siguientes archivos de Docker:</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th>Archivo</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Dockerfile</code></td>
+<td>Construye Angular y lo sirve con NGINX</td>
+</tr>
+<tr>
+<td><code>Dockerfile.api</code></td>
+<td>Crea el contenedor de json-server</td>
+</tr>
+<tr>
+<td><code>nginx.conf</code></td>
+<td>Configura NGINX para Angular y proxy a json-server</td>
+</tr>
+<tr>
+<td><code>.dockerignore</code></td>
+<td>Excluye archivos innecesarios del build</td>
+</tr>
+<tr>
+<td><code>docker-compose.yml</code></td>
+<td>Levanta Angular y json-server juntos</td>
+</tr>
+</tbody>
+</table>
 <h2>Directivas y características Angular utilizadas</h2>
 <ul>
 <li><code>*ngFor</code> — renderizado de listas dinámicas</li>
 <li><code>*ngIf</code> — renderizado condicional</li>
 <li><code>formControlName</code>, <code>[formGroup]</code> — formularios reactivos</li>
+<li><code>[(ngModel)]</code> — binding bidireccional en formularios simples</li>
 <li><code>[class]</code>, <code>[src]</code>, <code>[type]</code> — binding de atributos</li>
 <li><code>(click)</code>, <code>(ngSubmit)</code> — manejo de eventos</li>
 <li><code>routerLink</code> — navegación entre páginas</li>
-<li><code>OnInit</code> — lifecycle hook para inicialización de formularios y carga de datos</li>
+<li><code>OnInit</code> — lifecycle hook para inicialización</li>
 <li><code>ActivatedRoute</code> — lectura de parámetros de ruta dinámica</li>
 <li><code>BehaviorSubject</code> — estado reactivo de sesión en tiempo real</li>
 <li><code>ChangeDetectorRef</code> — detección manual de cambios en la vista</li>
+<li><code>HttpClient</code> — consumo de API REST</li>
+<li><code>Observable</code> + <code>subscribe</code> — manejo de datos asíncronos</li>
+<li><code>CanActivate</code> — guards para protección de rutas</li>
 </ul>
 <h2>Autor</h2>
 <p>Desarrollado por Fernando — DSY2202</p>

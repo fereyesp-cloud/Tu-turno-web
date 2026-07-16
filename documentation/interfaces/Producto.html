@@ -148,7 +148,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>interfaz que defiuine la estructura de un producto</p>
+                <p>Interfaz que define la estructura de un producto</p>
 
             </p>
 
@@ -166,12 +166,20 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#activo" 
+>
+                                            activo
+                                        </a>
+                                </li>
+                                <li>
                                         <a href="#categoria" 
 >
                                             categoria
                                         </a>
                                 </li>
                                 <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#descripcion" 
 >
                                             descripcion
@@ -181,6 +189,13 @@
                                         <a href="#descuento" 
 >
                                             descuento
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#id" 
+>
+                                            id
                                         </a>
                                 </li>
                                 <li>
@@ -202,9 +217,17 @@
                                         </a>
                                 </li>
                                 <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#precioData" 
 >
                                             precioData
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#stock" 
+>
+                                            stock
                                         </a>
                                 </li>
                             </ul>
@@ -218,6 +241,50 @@
 
             <section data-compodoc="block-properties">
                 <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="activo"></a>
+                                        <span class="name "><b>activo</b>
+                                            <a href="#activo">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>activo:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Estado activo/inactivo del producto</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                                 <tr>
@@ -251,7 +318,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Categoría del juego</p>
+                                    <div class="io-description"><p>Categoría del producto</p>
 </div>
                                 </td>
                             </tr>
@@ -284,13 +351,18 @@
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
 
 
 
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Descripción del juego</p>
+                                    <div class="io-description"><p>Descripción del producto</p>
 </div>
                                 </td>
                             </tr>
@@ -339,6 +411,50 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
+                                        <a name="id"></a>
+                                        <span class="name "><b>id</b>
+                                            <a href="#id">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>id:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>ID único del producto</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
                                         <a name="imagen"></a>
                                         <span class="name "><b>imagen</b>
                                             <a href="#imagen">
@@ -368,7 +484,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Ruta de la imagen del juego</p>
+                                    <div class="io-description"><p>Ruta de la imagen del producto</p>
 </div>
                                 </td>
                             </tr>
@@ -407,7 +523,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Nombre del juego</p>
+                                    <div class="io-description"><p>Nombre del producto</p>
 </div>
                                 </td>
                             </tr>
@@ -427,7 +543,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>precio:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>precio:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -435,7 +551,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                                         </td>
                                     </tr>
@@ -446,7 +562,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Precio formateado del juego</p>
+                                    <div class="io-description"><p>Precio numérico del producto</p>
 </div>
                                 </td>
                             </tr>
@@ -479,13 +595,62 @@
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
 
 
 
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Precio numérico para cálculos</p>
+                                    <div class="io-description"><p>Precio formateado del producto</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="stock"></a>
+                                        <span class="name "><b>stock</b>
+                                            <a href="#stock">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>stock:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Stock disponible</p>
 </div>
                                 </td>
                             </tr>
@@ -497,25 +662,33 @@
 
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { HttpClient } from &#x27;@angular/common/http&#x27;;
+import { Observable, map } from &#x27;rxjs&#x27;;
 
 /**
- * interfaz que defiuine la estructura de un producto
+ * Interfaz que define la estructura de un producto
  */
 export interface Producto {
-  /** Nombre del juego */
+  /** ID único del producto */
+  id?: number;
+  /** Nombre del producto */
   nombre: string;
-   /** Categoría del juego */
+  /** Categoría del producto */
   categoria: string;
-  /** Descripción del juego */
-  descripcion: string;
-   /** Precio formateado del juego */
-  precio: string;
-  /** Precio numérico para cálculos */
-  precioData: string;
+  /** Descripción del producto */
+  descripcion?: string;
+  /** Precio numérico del producto */
+  precio: number;
+  /** Precio formateado del producto */
+  precioData?: string;
   /** Información de descuento */
   descuento: string;
-  /** Ruta de la imagen del juego */
+  /** Ruta de la imagen del producto */
   imagen: string;
+  /** Stock disponible */
+  stock?: number;
+  /** Estado activo/inactivo del producto */
+  activo?: boolean;
 }
 
 /**
@@ -526,203 +699,54 @@ export interface Producto {
 })
 export class ProductoService {
 
-  /**
-   * Gestion de los producto de juegos de rol
-   */
+  /** URL base de json-server */
+  private url &#x3D; &#x27;/api/productos&#x27;;
 
-  private juegosRol: Producto[] &#x3D; [
-    {
-      nombre: &#x27;Caos en Neverwinter&#x27;,
-      categoria: &#x27;Juego de Rol&#x27;,
-      descripcion: &#x27;En Caos en Neverwinter, vivirás una épica aventura cooperativa en el universo de Dungeons &amp; Dragons.&#x27;,
-      precio: &#x27;$59.990&#x27;,
-      precioData: &#x27;59990&#x27;,
-      descuento: &#x27;10% con pagos en transferencia&#x27;,
-      imagen: &#x27;img/caosNeverwinter .webp&#x27;
-    },
-    {
-      nombre: &#x27;El Señor De Los Anillos Lcg Caja Básica&#x27;,
-      categoria: &#x27;Juego de Rol&#x27;,
-      descripcion: &#x27;En El Señor de los Anillos: el Juego de Cartas, los jugadores reúnen un grupo de aventureros que intentan completar misiones en la Tierra Media.&#x27;,
-      precio: &#x27;$59.990&#x27;,
-      precioData: &#x27;59990&#x27;,
-      descuento: &#x27;Sin descuento&#x27;,
-      imagen: &#x27;img/señorDeAnillos .webp&#x27;
-    },
-    {
-      nombre: &#x27;Dungeons And Dragons Inicio - Héroes De Tierras Fronterizas&#x27;,
-      categoria: &#x27;Juego de Rol&#x27;,
-      descripcion: &#x27;Este juego de mesa cooperativo traslada la experiencia de D&amp;D a un formato dinámico. Apto para diversos niveles de experiencia.&#x27;,
-      precio: &#x27;$69.990&#x27;,
-      precioData: &#x27;69990&#x27;,
-      descuento: &#x27;Sin descuento&#x27;,
-      imagen: &#x27;img/dungeons .webp&#x27;
-    }
-  ];
+  constructor(private http: HttpClient) {}
 
   /**
-   * Gestion de los producto de juegos familiares
+   * Obtiene todos los productos activos
+   * @returns Observable con todos los productos
    */
-
-  private juegosFamiliares: Producto[] &#x3D; [
-    {
-      nombre: &#x27;Basta&#x27;,
-      categoria: &#x27;Juegos familiares&#x27;,
-      descripcion: &#x27;Eleve su Noche de Juego con este completo juego de palabras de mesa, con una rueda con temporizador, 36 tarjetas en 144 categorías, para 2-8 jugadores.&#x27;,
-      precio: &#x27;$9.990&#x27;,
-      precioData: &#x27;9990&#x27;,
-      descuento: &#x27;10% con pagos en transferencia&#x27;,
-      imagen: &#x27;img/juegoBasta .webp&#x27;
-    },
-    {
-      nombre: &#x27;Improvisado&#x27;,
-      categoria: &#x27;Juegos familiares&#x27;,
-      descripcion: &#x27;Improvisado es un alocado juego en el cual dos participantes se enfrentan en un duelo de actuación e improvisación frente a sus amigos.&#x27;,
-      precio: &#x27;$17.990&#x27;,
-      precioData: &#x27;17990&#x27;,
-      descuento: &#x27;Sin descuento&#x27;,
-      imagen: &#x27;img/improvisado .webp&#x27;
-    },
-    {
-      nombre: &#x27;Party &amp; Co Family&#x27;,
-      categoria: &#x27;Juegos familiares&#x27;,
-      descripcion: &#x27;El verdadero juego de desafíos para toda la FAMILIA! Con dos niveles de dificultad: pruebas para niños y para adultos, con mímica, dibujo y preguntas.&#x27;,
-      precio: &#x27;$17.990&#x27;,
-      precioData: &#x27;17990&#x27;,
-      descuento: &#x27;Sin descuento&#x27;,
-      imagen: &#x27;img/partyFamily .webp&#x27;
-    }
-  ];
-
-  /**
-   * Se gestiona todos los productos de juegos de estrategia
-   */
-
-  private juegosEstrategia: Producto[] &#x3D; [
-    {
-      nombre: &#x27;EXIT: El laberinto maldito&#x27;,
-      categoria: &#x27;Juegos de estrategia&#x27;,
-      descripcion: &#x27;Juego de escape cooperativo para 1-4 personas, a partir de 10 años, con partidas de 60 a 90 minutos. Los jugadores exploran e interactúan con el entorno hasta hallar la salida.&#x27;,
-      precio: &#x27;$39.990&#x27;,
-      precioData: &#x27;39990&#x27;,
-      descuento: &#x27;10% con pagos en transferencia&#x27;,
-      imagen: &#x27;img/ExitLaberintoMaldito .webp&#x27;
-    },
-    {
-      nombre: &#x27;CATAN&#x27;,
-      categoria: &#x27;Juegos de estrategia&#x27;,
-      descripcion: &#x27;Juego de estrategia clásico para 3-4 jugadores donde construyes y desarrollas tu propia civilización en una isla llena de recursos.&#x27;,
-      precio: &#x27;$29.990&#x27;,
-      precioData: &#x27;29990&#x27;,
-      descuento: &#x27;Sin descuento&#x27;,
-      imagen: &#x27;img/catan .webp&#x27;
-    },
-    {
-      nombre: &#x27;La Tripulación: Misión Mar Profundo&#x27;,
-      categoria: &#x27;Juegos de estrategia&#x27;,
-      descripcion: &#x27;Juego cooperativo de bazas para 2-5 jugadores, a partir de 10 años. Reúne tu equipo y lánzate a descubrir el legendario continente perdido de Mu.&#x27;,
-      precio: &#x27;$17.990&#x27;,
-      precioData: &#x27;17990&#x27;,
-      descuento: &#x27;Sin descuento&#x27;,
-      imagen: &#x27;img/tripulacion .webp&#x27;
-    }
-  ];
-
-  /**
-   * Se gestiona todos los productos de juegos de fiesta
-   */
-
-  private juegosFiesta: Producto[] &#x3D; [
-    {
-      nombre: &#x27;Si te ríes, tomas&#x27;,
-      categoria: &#x27;Juegos de fiesta&#x27;,
-      descripcion: &#x27;El juego de tomar para las personas que no pueden quedarse serias. ¿Podrás aguantarte la risa cuando alguien del grupo...?&#x27;,
-      precio: &#x27;$14.990&#x27;,
-      precioData: &#x27;14990&#x27;,
-      descuento: &#x27;10% con pagos en transferencia&#x27;,
-      imagen: &#x27;img/SiteReisPierdes .webp&#x27;
-    },
-    {
-      nombre: &quot;Curao&#x27; Volao&#x27; o Weón de Cojones para Adultos&quot;,
-      categoria: &#x27;Juegos de fiesta&#x27;,
-      descripcion: &#x27;Party game donde en cada turno un jugador actúa como juez y los participantes acusan a otro de encajar con la descripción de la carta. Quien acumule 7 cartas pierde.&#x27;,
-      precio: &#x27;$15.990&#x27;,
-      precioData: &#x27;15990&#x27;,
-      descuento: &#x27;Sin descuento&#x27;,
-      imagen: &#x27;img/curaoVolao .webp&#x27;
-    },
-    {
-      nombre: &#x27;Mójate el potito&#x27;,
-      categoria: &#x27;Juegos de fiesta&#x27;,
-      descripcion: &#x27;Juego de cartas para responder preguntas que harán sudar a más de alguno. Perfecto para fiestas, juntas y carretes.&#x27;,
-      precio: &#x27;$12.990&#x27;,
-      precioData: &#x27;12990&#x27;,
-      descuento: &#x27;Sin descuento&#x27;,
-      imagen: &#x27;img/Mojate .webp&#x27;
-    }
-  ];
-
-  /**
-   * Obtiene todos los juegos de rol
-   * @returns obtiene todos los juegos asociados
-   */
-
-  getJuegosRol(): Producto[] {
-    return this.juegosRol;
-  }
-  /**
-   * Obtiene todos los juegos familiares
-   * @returns obtiene todos los juegos asociados
-   */
-
-  getJuegosFamiliares(): Producto[] {
-    return this.juegosFamiliares;
+  getProductos(): Observable&lt;any&gt; {
+    return this.http.get&lt;any[]&gt;(this.url).pipe(
+      map((productos: any[]) &#x3D;&gt; ({
+        categorias: this.agruparPorCategoria(productos.filter(p &#x3D;&gt; p.activo !&#x3D;&#x3D; false))
+      }))
+    );
   }
 
   /**
-   * Obtiene todos los juegos de estrategia
-   * @returns obtiene todos los juegos asociados
+   * Agrupa los productos por categoría
+   * @param productos Lista de productos
+   * @returns Array de categorías con sus productos
    */
-
-  getJuegosEstrategia(): Producto[] {
-    return this.juegosEstrategia;
+  private agruparPorCategoria(productos: any[]): any[] {
+    const mapa: { [key: string]: any[] } &#x3D; {};
+    productos.forEach(p &#x3D;&gt; {
+      if (!mapa[p.categoria]) mapa[p.categoria] &#x3D; [];
+      mapa[p.categoria].push(p);
+    });
+    return Object.keys(mapa).map(cat &#x3D;&gt; ({ categoria: cat, productos: mapa[cat] }));
   }
 
   /**
-   * Obtiene todos los juegos de fiesta
-   * @returns obtiene todos los juegos asociados
+   * Obtiene los juegos de una categoría específica
+   * @param categoria Nombre de la categoría
+   * @returns Observable con los productos de esa categoría
    */
-
-  getJuegosFiesta(): Producto[] {
-    return this.juegosFiesta;
+  getPorCategoria(categoria: string): Observable&lt;any[]&gt; {
+    return this.http.get&lt;any[]&gt;(&#x60;${this.url}?categoria&#x3D;${categoria}&amp;activo&#x3D;true&#x60;);
   }
 
   /**
-  * Obtiene los juegos destacados (primero de cada categoría)
-  * @returns Array con un juego destacado de cada categoría
-  */
-
-  getDestacados(): Producto[] {
-    return [
-      this.juegosRol[0],
-      this.juegosFamiliares[0],
-      this.juegosEstrategia[0],
-      this.juegosFiesta[0]
-    ];
-  }
-
-  /**
-  * Obtiene todos los juegos disponibles en la tienda
-  * @returns Array con todos los juegos de todas las categorías
-  */
-
-  getTodos(): Producto[] {
-    return [
-      ...this.juegosRol,
-      ...this.juegosFamiliares,
-      ...this.juegosEstrategia,
-      ...this.juegosFiesta
-    ];
+   * Obtiene los juegos destacados (primero de cada categoría)
+   * @returns Observable con un juego destacado de cada categoría
+   */
+  getDestacados(): Observable&lt;any[]&gt; {
+    return this.getProductos().pipe(
+      map((data: any) &#x3D;&gt; data.categorias.map((c: any) &#x3D;&gt; c.productos[0]))
+    );
   }
 }</code></pre>
     </div>

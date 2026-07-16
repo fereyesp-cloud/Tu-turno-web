@@ -359,8 +359,8 @@ listar y agregar al carro los juegos</p>
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="50"
-                                    class="link-to-prism">src/app/pages/perfil/perfil.ts:50</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="44"
+                                    class="link-to-prism">src/app/pages/perfil/perfil.ts:44</a></div>
                         </td>
                     </tr>
 
@@ -529,12 +529,6 @@ export class Perfil implements OnInit {
   ngOnInit() {
     const usuarioActivo &#x3D; this.session.getUsuarioActivo();
 
-    // Si no hay sesión redirigir al login
-    if (!usuarioActivo) {
-      this.router.navigate([&#x27;/login&#x27;]);
-      return;
-    }
-
     this.formularioPerfil &#x3D; this.fb.group({
       nombre: [usuarioActivo.nombre, Validators.required],
       nombreUsuario: [usuarioActivo.nombreUsuario, Validators.required],
@@ -668,7 +662,7 @@ export class Perfil implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><header class="encabezado" id="perfil">  <div class="contenedor encabezado-contenido">    <h1>Mi perfil - Tu turno web</h1>    <p>Bienvenido</p>  </div></header><main>  <section class="seccion perfil">    <div class="contenedor">      <form [formGroup]="formularioPerfil" (ngSubmit)="guardarCambios()">        <div class="mb-3">          <label class="form-label">Nombre completo</label>          <input type="text" class="form-control" formControlName="nombre"            [class.is-invalid]="formularioPerfil.get(\'nombre\')?.invalid && formularioPerfil.get(\'nombre\')?.touched">          <div class="invalid-feedback">El nombre es obligatorio</div>        </div>        <div class="mb-3">          <label class="form-label">Nombre de usuario</label>          <input type="text" class="form-control" formControlName="nombreUsuario"            [class.is-invalid]="formularioPerfil.get(\'nombreUsuario\')?.invalid && formularioPerfil.get(\'nombreUsuario\')?.touched">          <div class="invalid-feedback">El nombre de usuario es obligatorio</div>        </div>        <div class="mb-3">          <label class="form-label">Correo</label>          <input type="text" class="form-control" formControlName="correo"            [class.is-invalid]="formularioPerfil.get(\'correo\')?.invalid && formularioPerfil.get(\'correo\')?.touched">          <div class="invalid-feedback">            <span *ngIf="formularioPerfil.get(\'correo\')?.errors?.[\'required\']">El correo es obligatorio</span>            <span *ngIf="formularioPerfil.get(\'correo\')?.errors?.[\'email\']">El correo no tiene formato válido</span>          </div>        </div>        <div class="mb-3">          <label class="form-label">Fecha de nacimiento</label>          <input type="date" class="form-control" formControlName="fechaNacimiento"            [class.is-invalid]="formularioPerfil.get(\'fechaNacimiento\')?.invalid && formularioPerfil.get(\'fechaNacimiento\')?.touched">          <div class="invalid-feedback">            <span *ngIf="formularioPerfil.get(\'fechaNacimiento\')?.errors?.[\'required\']">La fecha es obligatoria</span>            <span *ngIf="formularioPerfil.get(\'fechaNacimiento\')?.errors?.[\'menorEdad\']">Debes tener al menos 13 años</span>          </div>        </div>        <div class="alert alert-success mt-3" *ngIf="mensajeExito">{{ mensajeExito }}</div>        <button type="submit" class="btn btn-primary">Guardar cambios</button>      </form>    </div>  </section></main><footer class="pie-pagina">  <p>© 2026 Tu turno Web — Ejemplo académico DSY2202</p></footer></div>'
-    var COMPONENTS = [{'name': 'AdminDashboard', 'selector': 'app-admin-dashboard'},{'name': 'App', 'selector': 'app-root'},{'name': 'Carrito', 'selector': 'app-carrito'},{'name': 'Catalogo', 'selector': 'app-catalogo'},{'name': 'Home', 'selector': 'app-home'},{'name': 'JuegosEstrategia', 'selector': 'app-juegos-estrategia'},{'name': 'JuegosFamiliares', 'selector': 'app-juegos-familiares'},{'name': 'JuegosFiesta', 'selector': 'app-juegos-fiesta'},{'name': 'JuegosRol', 'selector': 'app-juegos-rol'},{'name': 'Login', 'selector': 'app-login'},{'name': 'Navbar', 'selector': 'app-navbar'},{'name': 'Perfil', 'selector': 'app-perfil'},{'name': 'RecuperarContrasena', 'selector': 'app-recuperar-contrasena'},{'name': 'Registro', 'selector': 'app-registro'},{'name': 'TemplatePlaygroundComponent', 'selector': 'template-playground-root'}];
+    var COMPONENTS = [{'name': 'AdminDashboard', 'selector': 'app-admin-dashboard'},{'name': 'App', 'selector': 'app-root'},{'name': 'Carrito', 'selector': 'app-carrito'},{'name': 'Catalogo', 'selector': 'app-catalogo'},{'name': 'Home', 'selector': 'app-home'},{'name': 'JuegosEstrategia', 'selector': 'app-juegos-estrategia'},{'name': 'JuegosFamiliares', 'selector': 'app-juegos-familiares'},{'name': 'JuegosFiesta', 'selector': 'app-juegos-fiesta'},{'name': 'JuegosRol', 'selector': 'app-juegos-rol'},{'name': 'Login', 'selector': 'app-login'},{'name': 'Navbar', 'selector': 'app-navbar'},{'name': 'Perfil', 'selector': 'app-perfil'},{'name': 'ProductosApi', 'selector': 'app-productos-api'},{'name': 'RecuperarContrasena', 'selector': 'app-recuperar-contrasena'},{'name': 'Registro', 'selector': 'app-registro'},{'name': 'TemplatePlaygroundComponent', 'selector': 'template-playground-root'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'Perfil'};
 </script>

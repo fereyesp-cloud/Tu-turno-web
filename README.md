@@ -16,7 +16,7 @@ Tu Turno Web es una PYME ficticia que vende juegos de mesa. La aplicación permi
 - localStorage / sessionStorage
 - Vitest (pruebas unitarias)
 - RxJS (`BehaviorSubject`, `Observable`)
-- HttpClient (consumo de API externa)
+- HttpClient (consumo de API REST)
 - json-server (API REST local)
 - Docker + NGINX (contenedorización)
 
@@ -29,7 +29,7 @@ Tu Turno Web es una PYME ficticia que vende juegos de mesa. La aplicación permi
 - Navbar global reactivo según sesión activa
 - Carrito de compras con cantidad por producto, subtotal y eliminación individual
 - Perfil de usuario editable con formulario reactivo y validaciones
-- Panel de administración con CRUD completo de productos
+- Panel de administración con CRUD completo de productos (GET, POST, PUT, DELETE)
 - Recuperación de contraseña con formulario reactivo
 - Guards de rutas para proteger `/perfil` y `/admin`
 
@@ -51,7 +51,7 @@ npm install --legacy-peer-deps
 Levanta json-server en una terminal:
 
 ```bash
-json-server --watch db.json --port 3000
+json-server db.json --port 3000
 ```
 
 Levanta Angular en otra terminal:
@@ -87,7 +87,7 @@ Los productos se gestionan mediante una API REST local con json-server:
 | GET | `/api/productos` | Obtiene todos los productos |
 | POST | `/api/productos` | Crea un nuevo producto |
 | PUT | `/api/productos/:id` | Actualiza un producto |
-| DELETE lógico | `/api/productos/:id` | Desactiva un producto (`activo: false`) |
+| DELETE | `/api/productos/:id` | Elimina un producto |
 
 El archivo `db.json` contiene los datos con la siguiente estructura:
 
@@ -128,7 +128,7 @@ Para ejecutar las pruebas:
 ng test
 ```
 
-**Resultado:** 19 archivos de prueba, 26 tests, todos en verde ✅
+**Resultado:** 19 archivos de prueba, 31 tests, todos en verde ✅
 
 **Pruebas implementadas:**
 
@@ -141,6 +141,11 @@ ng test
 | `registro.spec.ts` | Edad menor a 13 | Verifica que fechaNacimiento tenga error si el usuario tiene menos de 13 años |
 | `session.spec.ts` | Creación del servicio | Verifica que el `SessionService` se instancie correctamente |
 | `session.spec.ts` | Creación automática del admin | Verifica que el servicio cree un usuario admin por defecto si no existe en localStorage |
+| `admin-dashboard.spec.ts` | Mostrar formulario nuevo producto | Verifica que el formulario se muestre al crear un nuevo producto |
+| `admin-dashboard.spec.ts` | Ocultar formulario al cancelar | Verifica que el formulario se oculte al cancelar |
+| `admin-dashboard.spec.ts` | Cargar datos al editar | Verifica que el formulario se llene con los datos del producto al editar |
+| `admin-dashboard.spec.ts` | Mostrar confirmación al eliminar | Verifica que el modal de confirmación se muestre al intentar eliminar |
+| `admin-dashboard.spec.ts` | Ocultar confirmación al cancelar | Verifica que el modal de confirmación se oculte al cancelar |
 
 ## Guards de rutas
 
